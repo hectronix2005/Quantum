@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quantum Florida Management — Professional property management in Florida. Fixed monthly fee. Maintenance, HOA representation, rentals & sales coordination.">
+    <meta name="keywords" content="property management Florida, HOA management, rental management, property maintenance, real estate Florida, administracion de propiedades Florida">
+    <meta name="author" content="Quantum Florida Management">
+    <title>Quantum Florida Management | Professional Property Management in Florida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Floating Language Toggle -->
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span class="lang-toggle__flag" id="langFlag">🇪🇸</span>
+        <span class="lang-toggle__label" id="langLabel">ES</span>
+    </button>
+
+    <!-- Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo">
+                <span class="logo__quantum">QUANTUM</span>
+                <span class="logo__florida">FLORIDA MANAGEMENT</span>
+            </a>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#home" class="nav__link active" data-i18n="nav_home">Home</a></li>
+                <li><a href="#services" class="nav__link" data-i18n="nav_services">Services</a></li>
+                <li><a href="#pricing" class="nav__link" data-i18n="nav_pricing">Pricing</a></li>
+                <li><a href="#about" class="nav__link" data-i18n="nav_about">About Us</a></li>
+                <li><a href="#testimonials" class="nav__link" data-i18n="nav_testimonials">Testimonials</a></li>
+                <li><a href="#contact" class="nav__link nav__link--cta" data-i18n="nav_cta">Get Started</a></li>
+            </ul>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero__bg"></div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <p class="hero__tagline" data-i18n="hero_tagline">Licensed Property Management in Florida</p>
+                <h1 class="hero__title" data-i18n="hero_title">Your Property.<br><span class="text-accent">Our Priority.</span></h1>
+                <p class="hero__description" data-i18n="hero_description">
+                    Full-service property management with a simple, transparent flat monthly fee.
+                    From maintenance coordination to HOA representation, rental management to
+                    sales assistance — we handle everything so you don't have to.
+                </p>
+                <div class="hero__actions">
+                    <a href="#pricing" class="btn btn--primary" data-i18n="hero_btn_plans">View Our Plans</a>
+                    <a href="#contact" class="btn btn--outline" data-i18n="hero_btn_consult">Free Consultation</a>
+                </div>
+                <div class="hero__stats">
+                    <div class="stat">
+                        <span class="stat__number" id="statProperties" data-target="500">0</span>+
+                        <span class="stat__label" data-i18n="stat_properties">Properties Managed</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__number" id="statSatisfaction" data-target="98">0</span>%
+                        <span class="stat__label" data-i18n="stat_satisfaction">Client Satisfaction</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat__number" id="statYears" data-target="15">0</span>+
+                        <span class="stat__label" data-i18n="stat_experience">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__card">
+                    <div class="hero__card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 21h18M3 7v14m18-14v14M6 11h.01M6 15h.01M6 19h.01M10 11h.01M10 15h.01M10 19h.01M14 11h.01M14 15h.01M14 19h.01M18 11h.01M18 15h.01M18 19h.01M9 3h6l3 4H6l3-4z"/>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="hero_card_title">Flat Fee. Full Service.</h3>
+                    <p data-i18n="hero_card_text">No hidden costs. No percentages. One predictable monthly fee covers all our management services.</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero__scroll">
+            <a href="#services" aria-label="Scroll to services">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section__header">
+                <p class="section__tagline" data-i18n="services_tagline">What We Do</p>
+                <h2 class="section__title" data-i18n="services_title">Comprehensive Property Management Services</h2>
+                <p class="section__subtitle" data-i18n="services_subtitle">Everything you need to protect your investment and maximize your property's potential — all under one roof.</p>
+            </div>
+            <div class="services__grid">
+                <!-- Service 1 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc1_title">Property Administration</h3>
+                    <p class="service__description" data-i18n="svc1_desc">
+                        Complete day-to-day management of your property. We handle bill payments,
+                        insurance coordination, permit tracking, and all administrative tasks
+                        so you can focus on what matters most.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc1_f1">Monthly financial reporting</li>
+                        <li data-i18n="svc1_f2">Bill payment & vendor management</li>
+                        <li data-i18n="svc1_f3">Insurance policy coordination</li>
+                        <li data-i18n="svc1_f4">24/7 emergency response line</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc2_title">Maintenance & Repairs</h3>
+                    <p class="service__description" data-i18n="svc2_desc">
+                        Proactive and reactive maintenance management. Our vetted network of
+                        licensed contractors ensures quality work at competitive prices, with
+                        full transparency on every job.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc2_f1">Licensed & insured contractor network</li>
+                        <li data-i18n="svc2_f2">Preventive maintenance scheduling</li>
+                        <li data-i18n="svc2_f3">Emergency repair coordination</li>
+                        <li data-i18n="svc2_f4">Quality inspections & photo reports</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc3_title">HOA Representation</h3>
+                    <p class="service__description" data-i18n="svc3_desc">
+                        We attend HOA meetings on your behalf, stay on top of rule changes,
+                        handle violation notices, and ensure your property stays compliant.
+                        Never miss an important community decision again.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc3_f1">Board meeting attendance & reporting</li>
+                        <li data-i18n="svc3_f2">Violation notice resolution</li>
+                        <li data-i18n="svc3_f3">Rule compliance monitoring</li>
+                        <li data-i18n="svc3_f4">Assessment & fee tracking</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc4_title">Rental Management</h3>
+                    <p class="service__description" data-i18n="svc4_desc">
+                        Maximize your rental income with our full-service leasing support.
+                        We coordinate with licensed realtors to find qualified tenants,
+                        handle lease agreements, and manage the entire rental cycle.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc4_f1">Tenant screening & placement</li>
+                        <li data-i18n="svc4_f2">Lease preparation & execution</li>
+                        <li data-i18n="svc4_f3">Rent collection & disbursement</li>
+                        <li data-i18n="svc4_f4">Move-in/move-out inspections</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc5_title">Sales Coordination</h3>
+                    <p class="service__description" data-i18n="svc5_desc">
+                        Ready to sell? We connect you with top-performing licensed realtors
+                        in your area, coordinate property preparation, and manage the entire
+                        process to help you get the best possible return.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc5_f1">Licensed realtor referral network</li>
+                        <li data-i18n="svc5_f2">Pre-sale property preparation</li>
+                        <li data-i18n="svc5_f3">Market analysis & pricing guidance</li>
+                        <li data-i18n="svc5_f4">Closing coordination support</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service__card">
+                    <div class="service__icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service__title" data-i18n="svc6_title">Financial Oversight</h3>
+                    <p class="service__description" data-i18n="svc6_desc">
+                        Crystal-clear financial management with detailed monthly statements,
+                        expense tracking, and year-end reporting. We keep every dollar
+                        accounted for and your records tax-ready.
+                    </p>
+                    <ul class="service__features">
+                        <li data-i18n="svc6_f1">Detailed monthly statements</li>
+                        <li data-i18n="svc6_f2">Expense categorization & tracking</li>
+                        <li data-i18n="svc6_f3">Year-end tax documentation (1099s)</li>
+                        <li data-i18n="svc6_f4">Online owner portal access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <div class="why-us__grid">
+                <div class="why-us__content">
+                    <p class="section__tagline" data-i18n="why_tagline">Why Quantum</p>
+                    <h2 class="section__title" data-i18n="why_title">The Flat-Fee Advantage</h2>
+                    <p class="why-us__text" data-i18n="why_text">
+                        Traditional property managers charge a percentage of your rent — meaning
+                        the more you earn, the more they take. At Quantum Florida Management,
+                        we believe in a different approach.
+                    </p>
+                    <div class="why-us__features">
+                        <div class="why-us__feature">
+                            <div class="why-us__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 data-i18n="why_f1_title">Predictable Monthly Cost</h4>
+                                <p data-i18n="why_f1_text">One flat fee covers all our management services. No surprises, no hidden charges, no percentage cuts.</p>
+                            </div>
+                        </div>
+                        <div class="why-us__feature">
+                            <div class="why-us__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 data-i18n="why_f2_title">Aligned Interests</h4>
+                                <p data-i18n="why_f2_text">We don't profit more when your costs go up. Our success is tied to your satisfaction, not your expenses.</p>
+                            </div>
+                        </div>
+                        <div class="why-us__feature">
+                            <div class="why-us__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 data-i18n="why_f3_title">Licensed & Insured</h4>
+                                <p data-i18n="why_f3_text">Fully compliant with Florida statutes. Licensed property managers and partnerships with authorized realtors.</p>
+                            </div>
+                        </div>
+                        <div class="why-us__feature">
+                            <div class="why-us__feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <div>
+                                <h4 data-i18n="why_f4_title">Local Expertise</h4>
+                                <p data-i18n="why_f4_text">Deep knowledge of Florida's property laws, HOA regulations, landlord-tenant statutes, and local market conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us__visual">
+                    <div class="comparison__card">
+                        <h4 class="comparison__title" data-i18n="comp_traditional">Traditional Manager</h4>
+                        <div class="comparison__item comparison__item--bad">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span data-i18n="comp_t1">8-12% of monthly rent</span>
+                        </div>
+                        <div class="comparison__item comparison__item--bad">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span data-i18n="comp_t2">Leasing fees up to 100% first month</span>
+                        </div>
+                        <div class="comparison__item comparison__item--bad">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span data-i18n="comp_t3">Maintenance markups 10-20%</span>
+                        </div>
+                        <div class="comparison__item comparison__item--bad">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+                            <span data-i18n="comp_t4">Hidden fees & surcharges</span>
+                        </div>
+                    </div>
+                    <div class="comparison__card comparison__card--highlight">
+                        <h4 class="comparison__title" data-i18n="comp_quantum">Quantum Florida</h4>
+                        <div class="comparison__item comparison__item--good">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span data-i18n="comp_q1">One flat monthly fee</span>
+                        </div>
+                        <div class="comparison__item comparison__item--good">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span data-i18n="comp_q2">No leasing commissions</span>
+                        </div>
+                        <div class="comparison__item comparison__item--good">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span data-i18n="comp_q3">Transparent contractor pricing</span>
+                        </div>
+                        <div class="comparison__item comparison__item--good">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            <span data-i18n="comp_q4">Zero hidden costs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section__header">
+                <p class="section__tagline" data-i18n="pricing_tagline">Simple Pricing</p>
+                <h2 class="section__title" data-i18n="pricing_title">Flat-Fee Plans That Make Sense</h2>
+                <p class="section__subtitle" data-i18n="pricing_subtitle">Choose the plan that fits your property. No hidden fees. No percentages. Cancel anytime with 30-day notice.</p>
+            </div>
+            <div class="pricing__grid">
+                <!-- Essential -->
+                <div class="pricing__card">
+                    <div class="pricing__header">
+                        <h3 class="pricing__name" data-i18n="plan1_name">Essential</h3>
+                        <p class="pricing__description" data-i18n="plan1_desc">Perfect for single-unit condos and apartments</p>
+                    </div>
+                    <div class="pricing__price">
+                        <span class="pricing__currency">$</span>
+                        <span class="pricing__amount" id="price1">149</span>
+                        <span class="pricing__period" data-i18n="price_period">/month</span>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan1_f1">Property administration</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan1_f2">Maintenance coordination</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan1_f3">Monthly financial reports</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan1_f4">Online owner portal</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan1_f5">Emergency response line</span></li>
+                        <li class="pricing__feature pricing__feature--disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span data-i18n="plan1_f6">HOA meeting attendance</span></li>
+                        <li class="pricing__feature pricing__feature--disabled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg><span data-i18n="plan1_f7">Rental/sales coordination</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn--secondary pricing__btn" data-i18n="btn_get_started">Get Started</a>
+                </div>
+
+                <!-- Professional -->
+                <div class="pricing__card pricing__card--featured">
+                    <div class="pricing__badge" data-i18n="badge_popular">Most Popular</div>
+                    <div class="pricing__header">
+                        <h3 class="pricing__name" data-i18n="plan2_name">Professional</h3>
+                        <p class="pricing__description" data-i18n="plan2_desc">Full-service management for rental properties</p>
+                    </div>
+                    <div class="pricing__price">
+                        <span class="pricing__currency">$</span>
+                        <span class="pricing__amount" id="price2">249</span>
+                        <span class="pricing__period" data-i18n="price_period">/month</span>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f1">Everything in Essential</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f2">HOA meeting representation</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f3">Tenant screening & placement</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f4">Rent collection & disbursement</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f5">Lease management</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f6">Licensed realtor coordination</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan2_f7">Year-end tax documentation</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn--primary pricing__btn" data-i18n="btn_get_started">Get Started</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="pricing__card">
+                    <div class="pricing__header">
+                        <h3 class="pricing__name" data-i18n="plan3_name">Premium</h3>
+                        <p class="pricing__description" data-i18n="plan3_desc">Multi-unit portfolios & investment properties</p>
+                    </div>
+                    <div class="pricing__price">
+                        <span class="pricing__currency">$</span>
+                        <span class="pricing__amount" id="price3">399</span>
+                        <span class="pricing__period" data-i18n="price_period">/month</span>
+                    </div>
+                    <ul class="pricing__features">
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f1">Everything in Professional</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f2">Up to 4 units per property</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f3">Priority maintenance response</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f4">Quarterly property inspections</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f5">Sales coordination & staging</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f6">Dedicated account manager</span></li>
+                        <li class="pricing__feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg><span data-i18n="plan3_f7">Investment performance reports</span></li>
+                    </ul>
+                    <a href="#contact" class="btn btn--secondary pricing__btn" data-i18n="btn_get_started">Get Started</a>
+                </div>
+            </div>
+            <p class="pricing__note" data-i18n="pricing_note">All plans include a 30-day satisfaction guarantee. Maintenance and contractor costs are billed separately at cost with no markup.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content">
+                    <p class="section__tagline" data-i18n="about_tagline">About Us</p>
+                    <h2 class="section__title" data-i18n="about_title">Trusted Property Management Across Florida</h2>
+                    <p class="about__text" data-i18n="about_text1">
+                        Quantum Florida Management was founded on a simple principle: property
+                        owners deserve transparent, reliable management at a fair price. We
+                        saw an industry filled with hidden fees and conflicting incentives,
+                        and decided to build something better.
+                    </p>
+                    <p class="about__text" data-i18n="about_text2">
+                        Our team brings together licensed property managers, experienced
+                        maintenance coordinators, and strong partnerships with authorized
+                        Florida realtors. Whether you own a condo in Miami, a townhouse in
+                        Orlando, or an investment property in Tampa — we have the local
+                        expertise to protect and grow your asset.
+                    </p>
+                    <div class="about__credentials">
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span data-i18n="cred_licensed">Florida Licensed</span>
+                        </div>
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span data-i18n="cred_insured">Fully Insured</span>
+                        </div>
+                        <div class="credential">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span data-i18n="cred_narpm">NARPM Member</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about__visual">
+                    <div class="about__image-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <p data-i18n="about_serving">Serving All of Florida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section__header">
+                <p class="section__tagline" data-i18n="process_tagline">How It Works</p>
+                <h2 class="section__title" data-i18n="process_title">Getting Started Is Simple</h2>
+            </div>
+            <div class="process__grid">
+                <div class="process__step">
+                    <div class="process__number">01</div>
+                    <h3 data-i18n="step1_title">Free Consultation</h3>
+                    <p data-i18n="step1_text">Tell us about your property and goals. We'll assess your needs and recommend the right plan.</p>
+                </div>
+                <div class="process__connector"></div>
+                <div class="process__step">
+                    <div class="process__number">02</div>
+                    <h3 data-i18n="step2_title">Property Onboarding</h3>
+                    <p data-i18n="step2_text">We conduct a thorough property assessment, set up your owner portal, and establish vendor relationships.</p>
+                </div>
+                <div class="process__connector"></div>
+                <div class="process__step">
+                    <div class="process__number">03</div>
+                    <h3 data-i18n="step3_title">Active Management</h3>
+                    <p data-i18n="step3_text">Sit back while we handle the day-to-day. Receive monthly reports and stay informed through your portal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section__header">
+                <p class="section__tagline" data-i18n="test_tagline">Testimonials</p>
+                <h2 class="section__title" data-i18n="test_title">What Our Clients Say</h2>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial__card">
+                    <div class="testimonial__stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial__text" data-i18n="test1_text">
+                        "I was paying my previous manager over $300/month in percentage fees alone.
+                        Quantum's flat fee saves me real money, and the service is significantly better.
+                        They attend every HOA meeting and keep me updated on everything."
+                    </p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">MR</div>
+                        <div>
+                            <p class="testimonial__name">Maria Rodriguez</p>
+                            <p class="testimonial__role" data-i18n="test1_role">Condo Owner, Miami Beach</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial__card">
+                    <div class="testimonial__stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial__text" data-i18n="test2_text">
+                        "As an out-of-state investor with three rental units in Orlando,
+                        having Quantum manage everything gives me complete peace of mind.
+                        Their maintenance team is responsive and their financial reporting is impeccable."
+                    </p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">JT</div>
+                        <div>
+                            <p class="testimonial__name">James Thompson</p>
+                            <p class="testimonial__role" data-i18n="test2_role">Investment Property Owner, Orlando</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial__card">
+                    <div class="testimonial__stars">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="testimonial__text" data-i18n="test3_text">
+                        "When it was time to sell my property, Quantum connected me with an excellent
+                        realtor and coordinated all the preparation work. The property sold above
+                        asking price in just two weeks. Couldn't be happier."
+                    </p>
+                    <div class="testimonial__author">
+                        <div class="testimonial__avatar">CP</div>
+                        <div>
+                            <p class="testimonial__name">Carlos Perez</p>
+                            <p class="testimonial__role" data-i18n="test3_role">Former Owner, Tampa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__content">
+                <h2 class="cta__title" data-i18n="cta_title">Ready to Simplify Your Property Management?</h2>
+                <p class="cta__text" data-i18n="cta_text">
+                    Join hundreds of Florida property owners who trust Quantum to protect
+                    their investments. Schedule a free consultation today.
+                </p>
+                <div class="cta__actions">
+                    <a href="#contact" class="btn btn--white" data-i18n="cta_btn1">Schedule Free Consultation</a>
+                    <a href="tel:+13055551234" class="btn btn--outline-white" data-i18n="cta_btn2">Call (305) 555-1234</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact__grid">
+                <div class="contact__info">
+                    <p class="section__tagline" data-i18n="contact_tagline">Contact Us</p>
+                    <h2 class="section__title" data-i18n="contact_title">Let's Talk About Your Property</h2>
+                    <p class="contact__text" data-i18n="contact_text">
+                        Whether you have questions about our services, need a custom quote for
+                        multiple properties, or are ready to get started — we're here to help.
+                    </p>
+                    <div class="contact__details">
+                        <div class="contact__detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            <div>
+                                <p class="contact__detail-label" data-i18n="contact_phone_label">Phone</p>
+                                <a href="tel:+13055551234">(305) 555-1234</a>
+                            </div>
+                        </div>
+                        <div class="contact__detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <div>
+                                <p class="contact__detail-label" data-i18n="contact_email_label">Email</p>
+                                <a href="mailto:info@quantumfloridamgmt.com">info@quantumfloridamgmt.com</a>
+                            </div>
+                        </div>
+                        <div class="contact__detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <div>
+                                <p class="contact__detail-label" data-i18n="contact_office_label">Office</p>
+                                <p data-i18n="contact_office_text">Serving All of Florida<br>Miami | Orlando | Tampa | Jacksonville</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact__form-wrapper">
+                    <form class="contact__form" id="contactForm">
+                        <div class="form__group">
+                            <label for="name" class="form__label" data-i18n="form_name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form__input" data-i18n-ph="form_name_ph" placeholder="John Smith" required>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="email" class="form__label" data-i18n="form_email">Email</label>
+                                <input type="email" id="email" name="email" class="form__input" placeholder="john@example.com" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="phone" class="form__label" data-i18n="form_phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="(305) 555-0000">
+                            </div>
+                        </div>
+                        <div class="form__group">
+                            <label for="service" class="form__label" data-i18n="form_service">I'm Interested In</label>
+                            <select id="service" name="service" class="form__input form__select">
+                                <option value="" data-i18n="form_select_default">Select a service...</option>
+                                <option value="administration" data-i18n="form_opt_admin">Property Administration</option>
+                                <option value="maintenance" data-i18n="form_opt_maint">Maintenance & Repairs</option>
+                                <option value="hoa" data-i18n="form_opt_hoa">HOA Representation</option>
+                                <option value="rental" data-i18n="form_opt_rental">Rental Management</option>
+                                <option value="sales" data-i18n="form_opt_sales">Sales Coordination</option>
+                                <option value="full" data-i18n="form_opt_full">Full-Service Management</option>
+                            </select>
+                        </div>
+                        <div class="form__group">
+                            <label for="message" class="form__label" data-i18n="form_message">Tell Us About Your Property</label>
+                            <textarea id="message" name="message" class="form__input form__textarea" rows="4" data-i18n-ph="form_message_ph" placeholder="Property type, location, number of units..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary form__submit" data-i18n="form_submit">Send Message</button>
+                        <p class="form__disclaimer" data-i18n="form_disclaimer">By submitting this form, you agree to be contacted regarding property management services. We respect your privacy.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#home" class="nav__logo">
+                        <span class="logo__quantum">QUANTUM</span>
+                        <span class="logo__florida">FLORIDA MANAGEMENT</span>
+                    </a>
+                    <p class="footer__tagline" data-i18n="footer_tagline">Professional property management with transparent flat-fee pricing. Serving property owners across the state of Florida.</p>
+                </div>
+                <div class="footer__links">
+                    <h4 data-i18n="footer_services">Services</h4>
+                    <ul>
+                        <li><a href="#services" data-i18n="svc1_title">Property Administration</a></li>
+                        <li><a href="#services" data-i18n="svc2_title">Maintenance & Repairs</a></li>
+                        <li><a href="#services" data-i18n="svc3_title">HOA Representation</a></li>
+                        <li><a href="#services" data-i18n="svc4_title">Rental Management</a></li>
+                        <li><a href="#services" data-i18n="svc5_title">Sales Coordination</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4 data-i18n="footer_company">Company</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="nav_about">About Us</a></li>
+                        <li><a href="#pricing" data-i18n="nav_pricing">Pricing</a></li>
+                        <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+                        <li><a href="#contact" data-i18n="footer_contact_link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4 data-i18n="footer_portals">Portals</h4>
+                    <ul>
+                        <li><a href="login/index.html" data-i18n="footer_portal_login">Sign In to Portal</a></li>
+                    </ul>
+                    <h4 style="margin-top:1.25rem" data-i18n="footer_areas">Service Areas</h4>
+                    <ul>
+                        <li>Miami-Dade County</li>
+                        <li>Broward County</li>
+                        <li>Orange County (Orlando)</li>
+                        <li>Hillsborough County (Tampa)</li>
+                        <li>Duval County (Jacksonville)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p data-i18n="footer_copy">&copy; 2026 Quantum Florida Management. All rights reserved.</p>
+                <div class="footer__legal">
+                    <a href="#" data-i18n="footer_privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer_terms">Terms of Service</a>
+                    <a href="#" data-i18n="footer_fair">Fair Housing Statement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

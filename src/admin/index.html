@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Quantum Florida Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <!-- ════════ LOGIN SCREEN ════════ -->
+    <div class="login" id="loginScreen">
+        <div class="login__card">
+            <div class="login__logo">
+                <span class="logo__q">Q</span>
+                <div>
+                    <span class="logo__quantum">QUANTUM</span>
+                    <span class="logo__florida">FLORIDA MANAGEMENT</span>
+                </div>
+            </div>
+            <h1>Admin Portal</h1>
+            <p class="login__subtitle">Sign in to manage your platform</p>
+            <form id="loginForm" class="login__form">
+                <div class="form__group">
+                    <label>Email</label>
+                    <input type="email" id="loginUser" placeholder="admin@quantumfloridamgmt.com" required>
+                </div>
+                <div class="form__group">
+                    <label>Password</label>
+                    <div class="input__password">
+                        <input type="password" id="loginPass" placeholder="Enter password" required>
+                        <button type="button" class="btn__eye" onclick="togglePassword('loginPass', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="login__error" id="loginError"></p>
+                <button type="submit" class="btn btn--primary btn--full">Sign In</button>
+            </form>
+            <p class="login__hint">Default: admin@quantumfloridamgmt.com / quantum2026</p>
+        </div>
+    </div>
+
+    <!-- ════════ DASHBOARD ════════ -->
+    <div class="dashboard" id="dashboard" style="display:none;">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar__logo">
+                <span class="logo__q">Q</span>
+                <div>
+                    <span class="logo__quantum">QUANTUM</span>
+                    <span class="logo__florida">ADMIN PANEL</span>
+                </div>
+            </div>
+            <nav class="sidebar__nav">
+                <a href="#" class="sidebar__link active" data-section="overview">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    Dashboard
+                </a>
+                <a href="#" class="sidebar__link" data-section="content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    Website Content
+                </a>
+                <a href="#" class="sidebar__link" data-section="properties">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    Properties
+                </a>
+                <a href="#" class="sidebar__link" data-section="clients">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Clients
+                </a>
+                <a href="#" class="sidebar__link" data-section="financials">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Financials
+                </a>
+                <a href="#" class="sidebar__link" data-section="updates">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    Updates
+                </a>
+            </nav>
+            <div class="sidebar__footer">
+                <button class="btn__logout" id="btnLogout">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                    Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Mobile Header -->
+        <div class="mobile-header" id="mobileHeader">
+            <button class="btn__hamburger" id="btnHamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <span class="mobile-header__title">Admin Panel</span>
+            <button class="btn__logout-sm" id="btnLogoutMobile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main" id="mainContent">
+
+            <!-- ──── OVERVIEW ──── -->
+            <section class="section" id="sec-overview">
+                <div class="section__top">
+                    <h2>Dashboard Overview</h2>
+                    <p class="section__date" id="currentDate"></p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card stat-card--blue">
+                        <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg></div>
+                        <div><p class="stat-card__number" id="statProperties">0</p><p class="stat-card__label">Properties</p></div>
+                    </div>
+                    <div class="stat-card stat-card--green">
+                        <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                        <div><p class="stat-card__number" id="statClients">0</p><p class="stat-card__label">Clients</p></div>
+                    </div>
+                    <div class="stat-card stat-card--gold">
+                        <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 8v1m9-5a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                        <div><p class="stat-card__number" id="statRevenue">$0</p><p class="stat-card__label">Monthly Revenue</p></div>
+                    </div>
+                    <div class="stat-card stat-card--navy">
+                        <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></div>
+                        <div><p class="stat-card__number" id="statUpdates">0</p><p class="stat-card__label">Updates</p></div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h3>Recent Activity</h3>
+                    <div id="recentActivity" class="activity-list"></div>
+                </div>
+            </section>
+
+            <!-- ──── WEBSITE CONTENT ──── -->
+            <section class="section" id="sec-content" style="display:none;">
+                <div class="section__top">
+                    <h2>Website Content Editor</h2>
+                    <button class="btn btn--primary btn--sm" id="btnSaveContent">Save Changes</button>
+                </div>
+                <div class="tabs">
+                    <button class="tab active" data-tab="tab-hero">Hero</button>
+                    <button class="tab" data-tab="tab-services">Services</button>
+                    <button class="tab" data-tab="tab-pricing">Pricing</button>
+                    <button class="tab" data-tab="tab-about">About</button>
+                    <button class="tab" data-tab="tab-images">Images</button>
+                </div>
+
+                <!-- Hero Tab -->
+                <div class="tab-content active" id="tab-hero">
+                    <div class="panel">
+                        <h3>Hero Section</h3>
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label>Tagline (EN)</label>
+                                <input type="text" id="edit_hero_tagline_en" class="form__input">
+                            </div>
+                            <div class="form__group">
+                                <label>Tagline (ES)</label>
+                                <input type="text" id="edit_hero_tagline_es" class="form__input">
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label>Title (EN)</label>
+                                <input type="text" id="edit_hero_title_en" class="form__input">
+                            </div>
+                            <div class="form__group">
+                                <label>Title (ES)</label>
+                                <input type="text" id="edit_hero_title_es" class="form__input">
+                            </div>
+                        </div>
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label>Description (EN)</label>
+                                <textarea id="edit_hero_desc_en" class="form__input" rows="3"></textarea>
+                            </div>
+                            <div class="form__group">
+                                <label>Description (ES)</label>
+                                <textarea id="edit_hero_desc_es" class="form__input" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form__row form__row--3">
+                            <div class="form__group">
+                                <label>Properties Count</label>
+                                <input type="number" id="edit_stat_properties" class="form__input">
+                            </div>
+                            <div class="form__group">
+                                <label>Satisfaction %</label>
+                                <input type="number" id="edit_stat_satisfaction" class="form__input">
+                            </div>
+                            <div class="form__group">
+                                <label>Years Experience</label>
+                                <input type="number" id="edit_stat_years" class="form__input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Tab -->
+                <div class="tab-content" id="tab-services">
+                    <div class="panel">
+                        <h3>Services (Edit titles and descriptions for each service)</h3>
+                        <div id="servicesEditor"></div>
+                    </div>
+                </div>
+
+                <!-- Pricing Tab -->
+                <div class="tab-content" id="tab-pricing">
+                    <div class="panel">
+                        <h3>Pricing Plans</h3>
+                        <div class="pricing-editor">
+                            <div class="pricing-editor__card">
+                                <h4>Essential</h4>
+                                <div class="form__group">
+                                    <label>Monthly Price ($)</label>
+                                    <input type="number" id="edit_price1" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (EN)</label>
+                                    <input type="text" id="edit_plan1_desc_en" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (ES)</label>
+                                    <input type="text" id="edit_plan1_desc_es" class="form__input">
+                                </div>
+                            </div>
+                            <div class="pricing-editor__card pricing-editor__card--featured">
+                                <h4>Professional <span class="badge">Popular</span></h4>
+                                <div class="form__group">
+                                    <label>Monthly Price ($)</label>
+                                    <input type="number" id="edit_price2" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (EN)</label>
+                                    <input type="text" id="edit_plan2_desc_en" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (ES)</label>
+                                    <input type="text" id="edit_plan2_desc_es" class="form__input">
+                                </div>
+                            </div>
+                            <div class="pricing-editor__card">
+                                <h4>Premium</h4>
+                                <div class="form__group">
+                                    <label>Monthly Price ($)</label>
+                                    <input type="number" id="edit_price3" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (EN)</label>
+                                    <input type="text" id="edit_plan3_desc_en" class="form__input">
+                                </div>
+                                <div class="form__group">
+                                    <label>Description (ES)</label>
+                                    <input type="text" id="edit_plan3_desc_es" class="form__input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Tab -->
+                <div class="tab-content" id="tab-about">
+                    <div class="panel">
+                        <h3>About Section</h3>
+                        <div class="form__group">
+                            <label>About Text 1 (EN)</label>
+                            <textarea id="edit_about1_en" class="form__input" rows="4"></textarea>
+                        </div>
+                        <div class="form__group">
+                            <label>About Text 1 (ES)</label>
+                            <textarea id="edit_about1_es" class="form__input" rows="4"></textarea>
+                        </div>
+                        <div class="form__group">
+                            <label>About Text 2 (EN)</label>
+                            <textarea id="edit_about2_en" class="form__input" rows="4"></textarea>
+                        </div>
+                        <div class="form__group">
+                            <label>About Text 2 (ES)</label>
+                            <textarea id="edit_about2_es" class="form__input" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Images Tab -->
+                <div class="tab-content" id="tab-images">
+                    <div class="panel">
+                        <h3>Image Manager</h3>
+                        <p class="panel__hint">Upload images for your website. Images are stored locally in your browser.</p>
+                        <div class="image-manager">
+                            <div class="image-slot">
+                                <label>Company Logo</label>
+                                <div class="image-slot__preview" id="preview_logo"></div>
+                                <input type="file" accept="image/*" data-target="preview_logo" data-key="img_logo" class="image-upload">
+                            </div>
+                            <div class="image-slot">
+                                <label>Hero Background</label>
+                                <div class="image-slot__preview" id="preview_hero"></div>
+                                <input type="file" accept="image/*" data-target="preview_hero" data-key="img_hero" class="image-upload">
+                            </div>
+                            <div class="image-slot">
+                                <label>About Section</label>
+                                <div class="image-slot__preview" id="preview_about"></div>
+                                <input type="file" accept="image/*" data-target="preview_about" data-key="img_about" class="image-upload">
+                            </div>
+                            <div class="image-slot">
+                                <label>Services Background</label>
+                                <div class="image-slot__preview" id="preview_services"></div>
+                                <input type="file" accept="image/*" data-target="preview_services" data-key="img_services" class="image-upload">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ──── PROPERTIES ──── -->
+            <section class="section" id="sec-properties" style="display:none;">
+                <div class="section__top">
+                    <h2>Properties</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddProperty">+ Add Property</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Address</th>
+                                <th>Client</th>
+                                <th>Plan</th>
+                                <th>Rent</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="propertiesTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ──── CLIENTS ──── -->
+            <section class="section" id="sec-clients" style="display:none;">
+                <div class="section__top">
+                    <h2>Client Accounts</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddClient">+ Add Client</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Properties</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ──── FINANCIALS ──── -->
+            <section class="section" id="sec-financials" style="display:none;">
+                <div class="section__top">
+                    <h2>Financial Overview</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddFinancial">+ Add Record</button>
+                </div>
+                <div class="stats-grid stats-grid--3">
+                    <div class="stat-card stat-card--green">
+                        <div><p class="stat-card__number" id="finTotalIncome">$0</p><p class="stat-card__label">Total Income</p></div>
+                    </div>
+                    <div class="stat-card stat-card--blue">
+                        <div><p class="stat-card__number" id="finTotalExpenses">$0</p><p class="stat-card__label">Total Expenses</p></div>
+                    </div>
+                    <div class="stat-card stat-card--gold">
+                        <div><p class="stat-card__number" id="finNetIncome">$0</p><p class="stat-card__label">Net Income</p></div>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Property</th>
+                                <th>Rent</th>
+                                <th>Expenses</th>
+                                <th>Net</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="financialsTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ──── UPDATES ──── -->
+            <section class="section" id="sec-updates" style="display:none;">
+                <div class="section__top">
+                    <h2>Property Updates</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddUpdate">+ New Update</button>
+                </div>
+                <div id="updatesList" class="updates-list"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ════════ MODAL ════════ -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;">
+        <div class="modal" id="modal">
+            <div class="modal__header">
+                <h3 id="modalTitle">Modal</h3>
+                <button class="modal__close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal__body" id="modalBody"></div>
+            <div class="modal__footer">
+                <button class="btn btn--secondary btn--sm" id="modalCancel">Cancel</button>
+                <button class="btn btn--primary btn--sm" id="modalSave">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
