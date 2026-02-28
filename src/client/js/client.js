@@ -35,18 +35,64 @@
             { id: 'u4', propertyId: 'p4', date: '2026-02-10', title: 'Kitchen Remodel Complete', description: 'Minor kitchen update finished: new faucet, garbage disposal, and cabinet hardware.', type: 'maintenance' },
             { id: 'u5', propertyId: 'p1', date: '2026-02-05', title: 'February Rent Collected', description: 'Rent of $2,800 collected on time. Funds disbursed to owner account.', type: 'financial' }
         ],
-        siteContent: {},
+        siteContent: {
+            hero_tagline_en: 'Licensed Property Management in Florida',
+            hero_tagline_es: 'Administracion de Propiedades Licenciada en Florida',
+            hero_title_en: 'Your Property. Our Priority.',
+            hero_title_es: 'Tu Propiedad. Nuestra Prioridad.',
+            hero_desc_en: 'Full-service property management with a simple, transparent flat monthly fee.',
+            hero_desc_es: 'Administracion integral de propiedades con una tarifa mensual fija, simple y transparente.',
+            stat_properties: 500,
+            stat_satisfaction: 98,
+            stat_years: 15,
+            price1: 149,
+            price2: 249,
+            price3: 399,
+            plan1_desc_en: 'Perfect for single-unit condos and apartments',
+            plan1_desc_es: 'Perfecto para condominios y apartamentos de una unidad',
+            plan2_desc_en: 'Full-service management for rental properties',
+            plan2_desc_es: 'Administracion completa para propiedades en alquiler',
+            plan3_desc_en: 'Multi-unit portfolios & investment properties',
+            plan3_desc_es: 'Portafolios multi-unidad y propiedades de inversion',
+            about1_en: 'Quantum Florida Management was founded on a simple principle: property owners deserve transparent, reliable management at a fair price.',
+            about1_es: 'Quantum Florida Management fue fundada bajo un principio simple: los propietarios merecen una administracion transparente, confiable y a un precio justo.',
+            about2_en: 'Our team brings together licensed property managers, experienced maintenance coordinators, and strong partnerships with authorized Florida realtors.',
+            about2_es: 'Nuestro equipo reune administradores de propiedades licenciados, coordinadores de mantenimiento con experiencia y solidas alianzas con agentes inmobiliarios autorizados en Florida.'
+        },
         images: {}
     };
 
     // ─── DATA ────────────────────────────────────────────────
+    function mergeDefaults(existing, defaults) {
+        var keys = Object.keys(defaults);
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            if (existing[k] === undefined) {
+                existing[k] = defaults[k];
+            }
+        }
+        return existing;
+    }
+
     function getData() {
         var raw = localStorage.getItem('qfm_data');
         if (!raw) {
             localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
             return JSON.parse(JSON.stringify(DEFAULT_DATA));
         }
-        return JSON.parse(raw);
+        var data = JSON.parse(raw);
+        // Fill in any missing top-level keys without overwriting existing data
+        var changed = false;
+        var keys = Object.keys(DEFAULT_DATA);
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            if (data[k] === undefined) {
+                data[k] = DEFAULT_DATA[k];
+                changed = true;
+            }
+        }
+        if (changed) localStorage.setItem('qfm_data', JSON.stringify(data));
+        return data;
     }
 
     var currentClient = null;

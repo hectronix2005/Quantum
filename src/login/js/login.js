@@ -69,7 +69,18 @@
             localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
             return JSON.parse(JSON.stringify(DEFAULT_DATA));
         }
-        return JSON.parse(raw);
+        var data = JSON.parse(raw);
+        var changed = false;
+        var keys = Object.keys(DEFAULT_DATA);
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            if (data[k] === undefined) {
+                data[k] = DEFAULT_DATA[k];
+                changed = true;
+            }
+        }
+        if (changed) localStorage.setItem('qfm_data', JSON.stringify(data));
+        return data;
     }
 
     // ─── DOM ELEMENTS ─────────────────────────────────────────

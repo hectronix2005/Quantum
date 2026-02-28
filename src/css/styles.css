@@ -295,6 +295,17 @@ ul {
     background: var(--blue-dark);
 }
 
+.nav__link--login {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    margin-left: 0.25rem;
+    padding: 0.5rem 1.25rem;
+}
+.nav__link--login:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.6);
+    color: var(--white) !important;
+}
+
 .nav__toggle {
     display: none;
     flex-direction: column;
@@ -1437,6 +1448,12 @@ ul {
     .nav__link--cta {
         margin-left: 0;
         margin-top: 1rem;
+        text-align: center;
+    }
+
+    .nav__link--login {
+        margin-left: 0;
+        margin-top: 0.5rem;
         text-align: center;
     }
 

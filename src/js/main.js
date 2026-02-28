@@ -13,6 +13,7 @@
         nav_about:          { en: 'About Us',       es: 'Nosotros' },
         nav_testimonials:   { en: 'Testimonials',   es: 'Testimonios' },
         nav_cta:            { en: 'Get Started',    es: 'Comenzar' },
+        nav_login:          { en: 'Log In',         es: 'Ingresar' },
 
         // ── Hero ──
         hero_tagline:       { en: 'Licensed Property Management in Florida', es: 'Administraci\u00f3n de Propiedades Licenciada en Florida' },
