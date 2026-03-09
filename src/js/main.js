@@ -212,13 +212,37 @@
         footer_terms:        { en: 'Terms of Service', es: 'T\u00e9rminos de Servicio' },
         footer_fair:         { en: 'Fair Housing Statement', es: 'Declaraci\u00f3n de Vivienda Justa' },
         footer_portals:      { en: 'Portals', es: 'Portales' },
-        footer_portal_login: { en: 'Sign In to Portal', es: 'Iniciar Sesion en Portal' }
+        footer_portal_login: { en: 'Sign In to Portal', es: 'Iniciar Sesion en Portal' },
+
+        // ── FAQ ──
+        nav_faq:             { en: 'FAQ', es: 'Preguntas' },
+        faq_tagline:         { en: 'Frequently Asked Questions', es: 'Preguntas Frecuentes' },
+        faq_title:           { en: 'Common Questions About Our Services', es: 'Preguntas Comunes Sobre Nuestros Servicios' },
+        faq_q1: { en: 'How much does property management cost in Florida?', es: '\u00bfCu\u00e1nto cuesta la administraci\u00f3n de propiedades en Florida?' },
+        faq_a1: { en: 'Our flat-fee plans start at just $149/month for single-unit condos and apartments. Unlike traditional property managers who charge 8-12% of monthly rent plus leasing fees, our transparent pricing means no surprises. Choose from Essential ($149), Professional ($249), or Premium ($399) depending on your needs.', es: 'Nuestros planes de tarifa fija comienzan en solo $149/mes para condominios y apartamentos de una unidad. A diferencia de los administradores tradicionales que cobran 8-12% de la renta mensual m\u00e1s comisiones, nuestros precios transparentes significan cero sorpresas. Elige entre Esencial ($149), Profesional ($249) o Premium ($399) seg\u00fan tus necesidades.' },
+        faq_q2: { en: 'Do you manage properties in Miami, Orlando, and Tampa?', es: '\u00bfAdministran propiedades en Miami, Orlando y Tampa?' },
+        faq_a2: { en: 'Yes! Quantum Florida Management serves property owners throughout the state of Florida, including Miami-Dade, Broward County (Fort Lauderdale), Orange County (Orlando), Hillsborough County (Tampa), and Duval County (Jacksonville). Our local expertise covers HOA regulations, landlord-tenant laws, and market conditions specific to each area.', es: '\u00a1S\u00ed! Quantum Florida Management sirve a propietarios en todo el estado de Florida, incluyendo Miami-Dade, Broward County (Fort Lauderdale), Orange County (Orlando), Hillsborough County (Tampa) y Duval County (Jacksonville). Nuestra experiencia local cubre regulaciones de HOA, leyes de arrendador-inquilino y condiciones de mercado espec\u00edficas de cada \u00e1rea.' },
+        faq_q3: { en: 'What does HOA management include?', es: '\u00bfQu\u00e9 incluye la administraci\u00f3n del HOA?' },
+        faq_a3: { en: 'Our HOA representation service includes attending board meetings on your behalf, monitoring rule changes, resolving violation notices, tracking assessments and fees, and ensuring your property stays fully compliant with community regulations. This service is included in our Professional and Premium plans.', es: 'Nuestro servicio de representaci\u00f3n ante el HOA incluye asistir a reuniones de la junta directiva en tu nombre, monitorear cambios de reglas, resolver notificaciones de violaciones, dar seguimiento a evaluaciones y cuotas, y asegurar que tu propiedad cumpla con las regulaciones de la comunidad. Este servicio est\u00e1 incluido en nuestros planes Profesional y Premium.' },
+        faq_q4: { en: 'Are you licensed property managers in Florida?', es: '\u00bfSon administradores de propiedades licenciados en Florida?' },
+        faq_a4: { en: 'Absolutely. Quantum Florida Management is fully licensed and insured in compliance with Florida statutes. We are also members of NARPM (National Association of Residential Property Managers). Our partnerships with authorized Florida realtors ensure all rental and sales transactions are handled by properly licensed professionals.', es: 'Absolutamente. Quantum Florida Management est\u00e1 totalmente licenciado y asegurado en cumplimiento con las leyes de Florida. Tambi\u00e9n somos miembros de NARPM (Asociaci\u00f3n Nacional de Administradores de Propiedades Residenciales). Nuestras alianzas con agentes inmobiliarios autorizados en Florida aseguran que todas las transacciones de alquiler y venta sean manejadas por profesionales debidamente licenciados.' },
+        faq_q5: { en: 'How do you handle rental property maintenance?', es: '\u00bfC\u00f3mo manejan el mantenimiento de propiedades en alquiler?' },
+        faq_a5: { en: 'We manage both preventive and reactive maintenance through our vetted network of licensed and insured contractors. This includes scheduling routine maintenance, coordinating emergency repairs through our 24/7 response line, conducting quality inspections with photo reports, and ensuring all work is completed at competitive prices with full transparency \u2014 no markups.', es: 'Gestionamos tanto el mantenimiento preventivo como el reactivo a trav\u00e9s de nuestra red verificada de contratistas licenciados y asegurados. Esto incluye programar mantenimiento rutinario, coordinar reparaciones de emergencia a trav\u00e9s de nuestra l\u00ednea de respuesta 24/7, realizar inspecciones de calidad con informes fotogr\u00e1ficos, y asegurar que todo el trabajo se complete a precios competitivos con total transparencia \u2014 sin recargos.' },
+        faq_q6: { en: 'Can I cancel my property management contract?', es: '\u00bfPuedo cancelar mi contrato de administraci\u00f3n de propiedades?' },
+        faq_a6: { en: 'Yes, all our plans can be cancelled with just 30 days written notice. We also include a 30-day satisfaction guarantee when you first sign up. There are no long-term commitments or early cancellation penalties. We earn your business every month through quality service.', es: 'S\u00ed, todos nuestros planes pueden cancelarse con solo 30 d\u00edas de aviso por escrito. Tambi\u00e9n incluimos una garant\u00eda de satisfacci\u00f3n de 30 d\u00edas cuando te inscribes por primera vez. No hay compromisos a largo plazo ni penalidades por cancelaci\u00f3n anticipada. Nos ganamos tu confianza cada mes con un servicio de calidad.' },
+        faq_q7: { en: 'Do you help find tenants for rental properties?', es: '\u00bfAyudan a encontrar inquilinos para propiedades en alquiler?' },
+        faq_a7: { en: 'Yes! Our Professional and Premium plans include full rental management: tenant screening and background checks, lease preparation and execution, rent collection and disbursement, and move-in/move-out inspections. We coordinate with licensed realtors to market your property and find qualified tenants quickly.', es: '\u00a1S\u00ed! Nuestros planes Profesional y Premium incluyen gesti\u00f3n completa de alquileres: evaluaci\u00f3n de inquilinos y verificaci\u00f3n de antecedentes, preparaci\u00f3n y ejecuci\u00f3n de contratos de arrendamiento, cobro y desembolso de rentas, e inspecciones de entrada y salida. Coordinamos con agentes inmobiliarios licenciados para promocionar tu propiedad y encontrar inquilinos calificados r\u00e1pidamente.' },
+        faq_q8: { en: '\u00bfHablan espa\u00f1ol? / Do you speak Spanish?', es: '\u00bfHablan espa\u00f1ol? / Do you speak Spanish?' },
+        faq_a8: { en: 'Yes! Our team is fully bilingual (English and Spanish). We serve a large Spanish-speaking community across Florida and all our services, reports, and communications are available in both languages. Use the language toggle on this page to view our entire site in Spanish.', es: '\u00a1S\u00ed! Nuestro equipo es completamente biling\u00fce (ingl\u00e9s y espa\u00f1ol). Servimos a una gran comunidad hispanohablante en toda Florida y todos nuestros servicios, reportes y comunicaciones est\u00e1n disponibles en ambos idiomas. Usa el bot\u00f3n de idioma en esta p\u00e1gina para ver todo nuestro sitio en espa\u00f1ol.' }
     };
 
     // ═══════════════════════════════════════════════════════════════
     // LANGUAGE SWITCHER
     // ═══════════════════════════════════════════════════════════════
-    var currentLang = localStorage.getItem('qfm_lang') || 'en';
+    // Detect language from URL parameter (for SEO hreflang support)
+    var urlParams = new URLSearchParams(window.location.search);
+    var urlLang   = urlParams.get('lang');
+    var currentLang = (urlLang === 'en' || urlLang === 'es') ? urlLang : (localStorage.getItem('qfm_lang') || 'en');
     var langToggle  = document.getElementById('langToggle');
     var langFlag    = document.getElementById('langFlag');
     var langLabel   = document.getElementById('langLabel');
@@ -269,6 +293,11 @@
     langToggle.addEventListener('click', function () {
         var newLang = currentLang === 'en' ? 'es' : 'en';
         setLanguage(newLang);
+
+        // Update URL with language parameter for SEO hreflang support
+        var url = new URL(window.location.href);
+        url.searchParams.set('lang', newLang);
+        history.pushState({ lang: newLang }, '', url.toString());
 
         // Add a bounce animation on click
         langToggle.classList.add('lang-toggle--bounce');

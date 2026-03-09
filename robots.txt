@@ -1,0 +1,11 @@
+# Quantum Florida Management — robots.txt
+# https://hectronix2005.github.io/Quantum/
+
+User-agent: *
+Allow: /
+
+Disallow: /src/admin/
+Disallow: /src/client/
+Disallow: /src/login/
+
+Sitemap: https://hectronix2005.github.io/Quantum/sitemap.xml

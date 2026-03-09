@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main page — English (default) -->
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en"        href="https://hectronix2005.github.io/Quantum/src/index.html?lang=en" />
+    <xhtml:link rel="alternate" hreflang="es"        href="https://hectronix2005.github.io/Quantum/src/index.html?lang=es" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hectronix2005.github.io/Quantum/src/index.html" />
+    <lastmod>2026-03-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sections (anchors — informational for crawlers) -->
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html#services</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html#pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html#about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html#faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hectronix2005.github.io/Quantum/src/index.html#contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
