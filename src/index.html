@@ -22,28 +22,58 @@
     <meta property="og:url" content="https://hectronix2005.github.io/Quantum/src/index.html">
     <meta property="og:title" content="Quantum Florida Management | Flat-Fee Property Management">
     <meta property="og:description" content="Professional property management across Florida. Flat monthly fee, no percentages. Maintenance, HOA, rentals & sales in Miami, Orlando, Tampa, Jacksonville.">
-    <meta property="og:image" content="https://hectronix2005.github.io/Quantum/src/assets/og-image.png">
+    <meta property="og:image" content="https://hectronix2005.github.io/Quantum/src/assets/og-image.svg">
+    <meta property="og:image:type" content="image/svg+xml">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Quantum Florida Management - Flat-fee property management from $149/month. Miami, Orlando, Tampa, Jacksonville.">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="es_US">
     <meta property="og:site_name" content="Quantum Florida Management">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@quantumfloridamgmt">
+    <meta name="twitter:creator" content="@quantumfloridamgmt">
     <meta name="twitter:title" content="Quantum Florida Management | Flat-Fee Property Management">
     <meta name="twitter:description" content="Licensed property management in Florida. Flat fee from $149/mo. Serving Miami, Orlando, Tampa, Jacksonville & Fort Lauderdale.">
-    <meta name="twitter:image" content="https://hectronix2005.github.io/Quantum/src/assets/og-image.png">
+    <meta name="twitter:image" content="https://hectronix2005.github.io/Quantum/src/assets/og-image.svg">
+    <meta name="twitter:image:alt" content="Quantum Florida Management - Professional property management services">
 
     <!-- Theme & Favicon -->
     <meta name="theme-color" content="#0a1628">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
-    <!-- Fonts -->
+    <!-- Geographic Meta -->
+    <meta name="geo.region" content="US-FL">
+    <meta name="geo.placename" content="Miami, Florida">
+    <meta name="geo.position" content="25.7617;-80.1918">
+    <meta name="ICBM" content="25.7617, -80.1918">
+
+    <!-- Additional SEO Meta -->
+    <meta name="format-detection" content="telephone=yes">
+    <meta name="rating" content="general">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="coverage" content="Florida, USA">
+    <meta name="distribution" content="local">
+    <meta name="target" content="property owners, real estate investors, Florida homeowners">
+    <meta name="subject" content="Property Management Services Florida">
+    <meta name="classification" content="Business, Real Estate, Property Management">
+    <meta name="category" content="Property Management">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <!-- Performance: Fonts -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
@@ -71,6 +101,7 @@
                 <li><a href="#about" class="nav__link" data-i18n="nav_about">About Us</a></li>
                 <li><a href="#testimonials" class="nav__link" data-i18n="nav_testimonials">Testimonials</a></li>
                 <li><a href="#faq" class="nav__link" data-i18n="nav_faq">FAQ</a></li>
+                <li><a href="blog/index.html" class="nav__link" data-i18n="nav_blog">Blog</a></li>
                 <li><a href="#contact" class="nav__link nav__link--cta" data-i18n="nav_cta">Get Started</a></li>
                 <li><a href="login/index.html" class="nav__link nav__link--login" data-i18n="nav_login">Log In</a></li>
             </ul>
@@ -81,6 +112,7 @@
             </button>
         </nav>
     </header>
+    <div class="nav__overlay" id="navOverlay"></div>
 
     <main id="main-content">
 
@@ -672,29 +704,34 @@
                         Whether you have questions about our services, need a custom quote for
                         multiple properties, or are ready to get started — we're here to help.
                     </p>
-                    <div class="contact__details">
+                    <address class="contact__details" itemscope itemtype="https://schema.org/LocalBusiness">
+                        <meta itemprop="name" content="Quantum Florida Management">
+                        <meta itemprop="priceRange" content="$149 - $399/month">
                         <div class="contact__detail">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                             <div>
                                 <p class="contact__detail-label" data-i18n="contact_phone_label">Phone</p>
-                                <a href="tel:+13055551234">(305) 555-1234</a>
+                                <a href="tel:+13055551234" itemprop="telephone">(305) 555-1234</a>
                             </div>
                         </div>
                         <div class="contact__detail">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                             <div>
                                 <p class="contact__detail-label" data-i18n="contact_email_label">Email</p>
-                                <a href="mailto:info@quantumfloridamgmt.com">info@quantumfloridamgmt.com</a>
+                                <a href="mailto:info@quantumfloridamgmt.com" itemprop="email">info@quantumfloridamgmt.com</a>
                             </div>
                         </div>
                         <div class="contact__detail">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             <div>
                                 <p class="contact__detail-label" data-i18n="contact_office_label">Office</p>
-                                <p data-i18n="contact_office_text">Serving All of Florida<br>Miami | Orlando | Tampa | Jacksonville</p>
+                                <p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                    <span itemprop="addressRegion">Florida</span>, <span itemprop="addressCountry">US</span><br>
+                                    <span data-i18n="contact_office_text">Miami | Orlando | Tampa | Jacksonville</span>
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </address>
                 </div>
                 <div class="contact__form-wrapper">
                     <form class="contact__form" id="contactForm">
@@ -736,6 +773,44 @@
         </div>
     </section>
 
+    <!-- Blog Preview Section -->
+    <section class="blog-preview" style="padding: var(--section-padding) 0; background: #f8fafc;">
+      <div class="container">
+        <div class="section__header" style="text-align:center; margin-bottom: 3rem;">
+          <p class="section__label" style="color: var(--blue); font-weight:600; letter-spacing:0.1em; font-size:0.85rem; text-transform:uppercase; margin-bottom:0.5rem;">Knowledge Center</p>
+          <h2 class="section__title" style="font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem;">Florida Property Management Resources</h2>
+          <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">Expert guides to help Florida property owners stay compliant, save money, and maximize their investment.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+
+          <a href="blog/hoa-rules-florida-2026.html" style="display:block; background:#fff; border-radius:12px; padding:1.75rem; text-decoration:none; color:inherit; box-shadow:0 2px 12px rgba(0,0,0,0.07); border:1px solid #e2e8f0; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
+            <span style="display:inline-block; background: rgba(37,99,235,0.1); color: var(--blue); font-size:0.75rem; font-weight:600; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.05em;">HOA Management</span>
+            <h3 style="font-size:1.05rem; font-weight:700; color: var(--navy); margin-bottom:0.75rem; line-height:1.4;">HOA Rules Florida 2026: What Every Property Owner Must Know</h3>
+            <p style="font-size:0.9rem; color: var(--text-light); line-height:1.6; margin-bottom:1rem;">SB 4D updates, violation processes, owner rights, and fee comparisons across Florida cities.</p>
+            <span style="color: var(--blue); font-weight:600; font-size:0.9rem;">Read Guide →</span>
+          </a>
+
+          <a href="blog/flat-fee-vs-percentage-property-management-florida.html" style="display:block; background:#fff; border-radius:12px; padding:1.75rem; text-decoration:none; color:inherit; box-shadow:0 2px 12px rgba(0,0,0,0.07); border:1px solid #e2e8f0; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
+            <span style="display:inline-block; background: rgba(212,168,67,0.15); color: #a07828; font-size:0.75rem; font-weight:600; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.05em;">Cost Savings</span>
+            <h3 style="font-size:1.05rem; font-weight:700; color: var(--navy); margin-bottom:0.75rem; line-height:1.4;">Flat-Fee vs. Percentage Property Management: Save $3,000+/Year</h3>
+            <p style="font-size:0.9rem; color: var(--text-light); line-height:1.6; margin-bottom:1rem;">Real numbers comparing 8–10% traditional fees vs. flat-fee across different rent levels in Florida.</p>
+            <span style="color: var(--blue); font-weight:600; font-size:0.9rem;">Read Guide →</span>
+          </a>
+
+          <a href="blog/investment-property-tips-florida-2026.html" style="display:block; background:#fff; border-radius:12px; padding:1.75rem; text-decoration:none; color:inherit; box-shadow:0 2px 12px rgba(0,0,0,0.07); border:1px solid #e2e8f0; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
+            <span style="display:inline-block; background: rgba(16,185,129,0.1); color: #047857; font-size:0.75rem; font-weight:600; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.05em;">Investment Strategy</span>
+            <h3 style="font-size:1.05rem; font-weight:700; color: var(--navy); margin-bottom:0.75rem; line-height:1.4;">Florida Investment Property Tips 2026: Cap Rates, ROI & Tax Advantages</h3>
+            <p style="font-size:0.9rem; color: var(--text-light); line-height:1.6; margin-bottom:1rem;">Miami, Orlando, and Tampa cap rates, 7 investor mistakes to avoid, and Florida's unique tax benefits.</p>
+            <span style="color: var(--blue); font-weight:600; font-size:0.9rem;">Read Guide →</span>
+          </a>
+
+        </div>
+        <div style="text-align:center;">
+          <a href="blog/index.html" class="btn btn--outline" style="display:inline-flex; align-items:center; gap:0.5rem;">View All Articles <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
     </main>
 
     <!-- Footer -->
@@ -767,6 +842,16 @@
                         <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
                         <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
                         <li><a href="#contact" data-i18n="footer_contact_link">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__links">
+                    <h4>Blog</h4>
+                    <ul>
+                        <li><a href="blog/hoa-rules-florida-2026.html">HOA Rules 2026</a></li>
+                        <li><a href="blog/flat-fee-vs-percentage-property-management-florida.html">Flat-Fee vs. Percentage</a></li>
+                        <li><a href="blog/florida-landlord-tenant-laws-2026.html">Landlord-Tenant Laws</a></li>
+                        <li><a href="blog/investment-property-tips-florida-2026.html">Investment Tips 2026</a></li>
+                        <li><a href="blog/index.html">All Articles →</a></li>
                     </ul>
                 </div>
                 <div class="footer__links">
@@ -804,38 +889,88 @@
           "@type": "Organization",
           "@id": "https://hectronix2005.github.io/Quantum/#organization",
           "name": "Quantum Florida Management",
+          "legalName": "Quantum Florida Management LLC",
           "url": "https://hectronix2005.github.io/Quantum/src/index.html",
-          "logo": "https://hectronix2005.github.io/Quantum/src/assets/logo.png",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://hectronix2005.github.io/Quantum/src/assets/favicon.svg",
+            "width": 512,
+            "height": 512
+          },
+          "image": "https://hectronix2005.github.io/Quantum/src/assets/og-image.png",
           "telephone": "+1-305-555-1234",
           "email": "info@quantumfloridamgmt.com",
-          "description": "Professional property management company in Florida offering flat-fee plans for property administration, maintenance, HOA representation, rental management, and sales coordination.",
+          "foundingDate": "2020",
+          "description": "Professional property management company in Florida offering flat-fee plans starting at $149/month for property administration, maintenance, HOA representation, rental management, and sales coordination. Licensed and insured. NARPM member.",
+          "slogan": "Your Property. Our Priority.",
+          "knowsLanguage": ["en", "es"],
+          "numberOfEmployees": { "@type": "QuantitativeValue", "value": "10" },
           "areaServed": [
-            { "@type": "City", "name": "Miami", "containedInPlace": { "@type": "State", "name": "Florida" } },
-            { "@type": "City", "name": "Orlando", "containedInPlace": { "@type": "State", "name": "Florida" } },
-            { "@type": "City", "name": "Tampa", "containedInPlace": { "@type": "State", "name": "Florida" } },
-            { "@type": "City", "name": "Jacksonville", "containedInPlace": { "@type": "State", "name": "Florida" } },
-            { "@type": "City", "name": "Fort Lauderdale", "containedInPlace": { "@type": "State", "name": "Florida" } }
+            { "@type": "AdministrativeArea", "name": "Miami-Dade County", "containedInPlace": { "@type": "State", "name": "Florida", "sameAs": "https://www.wikidata.org/wiki/Q812" } },
+            { "@type": "AdministrativeArea", "name": "Broward County", "containedInPlace": { "@type": "State", "name": "Florida" } },
+            { "@type": "AdministrativeArea", "name": "Orange County", "containedInPlace": { "@type": "State", "name": "Florida" } },
+            { "@type": "AdministrativeArea", "name": "Hillsborough County", "containedInPlace": { "@type": "State", "name": "Florida" } },
+            { "@type": "AdministrativeArea", "name": "Duval County", "containedInPlace": { "@type": "State", "name": "Florida" } }
           ],
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
             "reviewCount": "127",
-            "bestRating": "5"
+            "bestRating": "5",
+            "worstRating": "1"
           },
-          "sameAs": []
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+1-305-555-1234",
+              "contactType": "customer service",
+              "email": "info@quantumfloridamgmt.com",
+              "availableLanguage": ["English", "Spanish"],
+              "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              }
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+1-305-555-1234",
+              "contactType": "emergency",
+              "description": "24/7 emergency maintenance line",
+              "availableLanguage": ["English", "Spanish"]
+            }
+          ],
+          "sameAs": [
+            "https://www.facebook.com/quantumfloridamgmt",
+            "https://www.instagram.com/quantumfloridamgmt",
+            "https://www.linkedin.com/company/quantum-florida-management",
+            "https://twitter.com/quantumfloridamgmt"
+          ],
+          "memberOf": {
+            "@type": "Organization",
+            "name": "National Association of Residential Property Managers",
+            "alternateName": "NARPM",
+            "url": "https://www.narpm.org"
+          }
         },
         {
-          "@type": "LocalBusiness",
+          "@type": ["LocalBusiness", "ProfessionalService", "RealEstateAgent"],
           "@id": "https://hectronix2005.github.io/Quantum/#localbusiness",
           "name": "Quantum Florida Management",
-          "image": "https://hectronix2005.github.io/Quantum/src/assets/logo.png",
+          "image": "https://hectronix2005.github.io/Quantum/src/assets/og-image.png",
           "telephone": "+1-305-555-1234",
           "email": "info@quantumfloridamgmt.com",
-          "priceRange": "$149 - $399/month",
+          "priceRange": "$$",
+          "currenciesAccepted": "USD",
+          "paymentAccepted": "Cash, Credit Card, Bank Transfer, ACH",
+          "hasMap": "https://maps.google.com/?q=Miami,FL",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Miami",
             "addressLocality": "Miami",
             "addressRegion": "FL",
+            "postalCode": "33101",
             "addressCountry": "US"
           },
           "geo": {
@@ -849,24 +984,188 @@
               "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
               "opens": "09:00",
               "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "10:00",
+              "closes": "14:00"
             }
           ],
-          "url": "https://hectronix2005.github.io/Quantum/src/index.html"
+          "url": "https://hectronix2005.github.io/Quantum/src/index.html",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127",
+            "bestRating": "5"
+          },
+          "review": [
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Maria L." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "I was paying my previous manager over $300/month in percentage fees alone. Quantum's flat fee saves me real money, and the service is significantly better. They attend every HOA meeting and keep me updated on everything.",
+              "datePublished": "2025-11-15",
+              "name": "Best property management decision I made"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Carlos M." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "As an out-of-state investor with three rental units in Orlando, having Quantum manage everything gives me complete peace of mind. Their maintenance team is responsive and their financial reporting is impeccable.",
+              "datePublished": "2025-10-22",
+              "name": "Perfect for out-of-state investors"
+            },
+            {
+              "@type": "Review",
+              "author": { "@type": "Person", "name": "Robert K." },
+              "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+              "reviewBody": "When it was time to sell my property, Quantum connected me with an excellent realtor and coordinated all the preparation work. The property sold above asking price in just two weeks.",
+              "datePublished": "2025-09-10",
+              "name": "Sold above asking in two weeks"
+            }
+          ],
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Miami-Dade County",
+              "description": "Property management services in Miami, Coral Gables, Hialeah, Miami Beach, Doral, Kendall"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Broward County",
+              "description": "Property management services in Fort Lauderdale, Hollywood, Pompano Beach, Coral Springs, Miramar"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Orange County",
+              "description": "Property management services in Orlando, Winter Park, Kissimmee, Celebration, Lake Nona"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hillsborough County",
+              "description": "Property management services in Tampa, Brandon, Temple Terrace, Plant City"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Duval County",
+              "description": "Property management services in Jacksonville, Jacksonville Beach, Neptune Beach"
+            }
+          ]
         },
         {
           "@type": "Service",
+          "@id": "https://hectronix2005.github.io/Quantum/#service",
+          "name": "Florida Property Management",
           "serviceType": "Property Management",
           "provider": { "@id": "https://hectronix2005.github.io/Quantum/#organization" },
           "areaServed": { "@type": "State", "name": "Florida" },
+          "description": "Full-service property management for Florida property owners. Flat monthly fee covering administration, maintenance coordination, HOA representation, rental management, and sales coordination.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Essential Plan",
+              "description": "Property administration, maintenance coordination, monthly financial reports, and emergency response for single-unit condos and apartments.",
+              "price": "149",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "149",
+                "priceCurrency": "USD",
+                "unitText": "MONTH"
+              },
+              "eligibleRegion": { "@type": "State", "name": "Florida" },
+              "seller": { "@id": "https://hectronix2005.github.io/Quantum/#organization" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Professional Plan",
+              "description": "Full-service rental management including HOA representation, tenant screening, rent collection, lease management, and licensed realtor coordination.",
+              "price": "249",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "249",
+                "priceCurrency": "USD",
+                "unitText": "MONTH"
+              },
+              "eligibleRegion": { "@type": "State", "name": "Florida" },
+              "seller": { "@id": "https://hectronix2005.github.io/Quantum/#organization" }
+            },
+            {
+              "@type": "Offer",
+              "name": "Premium Plan",
+              "description": "Multi-unit portfolio management with priority maintenance, quarterly inspections, sales coordination, dedicated account manager, and investment performance reports.",
+              "price": "399",
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": "399",
+                "priceCurrency": "USD",
+                "unitText": "MONTH"
+              },
+              "eligibleRegion": { "@type": "State", "name": "Florida" },
+              "seller": { "@id": "https://hectronix2005.github.io/Quantum/#organization" }
+            }
+          ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Property Management Services",
+            "name": "Property Management Services Florida",
             "itemListElement": [
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Property Administration", "description": "Complete day-to-day management including bill payments, insurance coordination, and permit tracking." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Maintenance & Repairs", "description": "Proactive and reactive maintenance management with licensed contractor network." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HOA Representation", "description": "Board meeting attendance, violation resolution, rule compliance monitoring." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rental Management", "description": "Tenant screening, lease management, rent collection, and move-in/out inspections." } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sales Coordination", "description": "Licensed realtor referrals, pre-sale preparation, market analysis, and closing support." } }
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Property Administration Florida",
+                  "description": "Complete day-to-day property management including bill payments, insurance coordination, permit tracking, and 24/7 emergency response.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Property Maintenance & Repairs Florida",
+                  "description": "Proactive and reactive maintenance management with licensed and insured contractor network. Photo reports and transparent pricing.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "HOA Management & Representation Florida",
+                  "description": "Board meeting attendance, violation notice resolution, rule compliance monitoring, and assessment tracking for Florida HOA communities.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Rental Property Management Florida",
+                  "description": "Tenant screening, background checks, lease preparation, rent collection, disbursement, and move-in/out inspections. Serving Miami, Orlando, Tampa.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Property Sales Coordination Florida",
+                  "description": "Licensed realtor referral network, pre-sale property preparation, market analysis, pricing guidance, and closing coordination.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Financial Oversight & Reporting",
+                  "description": "Monthly financial statements, expense tracking, year-end tax documentation (1099s), and online owner portal access.",
+                  "areaServed": { "@type": "State", "name": "Florida" }
+                }
+              }
             ]
           }
         },
@@ -875,8 +1174,59 @@
           "@id": "https://hectronix2005.github.io/Quantum/#website",
           "url": "https://hectronix2005.github.io/Quantum/src/index.html",
           "name": "Quantum Florida Management",
-          "inLanguage": ["en", "es"],
-          "publisher": { "@id": "https://hectronix2005.github.io/Quantum/#organization" }
+          "alternateName": "Quantum FL Management",
+          "inLanguage": ["en-US", "es-US"],
+          "publisher": { "@id": "https://hectronix2005.github.io/Quantum/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://hectronix2005.github.io/Quantum/src/index.html#contact"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://hectronix2005.github.io/Quantum/src/index.html#webpage",
+          "url": "https://hectronix2005.github.io/Quantum/src/index.html",
+          "name": "Quantum Florida Management | Professional Property Management in Miami, Orlando, Tampa",
+          "description": "Licensed property management across Florida. Flat monthly fee from $149. Maintenance, HOA representation, rental management & sales coordination.",
+          "inLanguage": ["en-US", "es-US"],
+          "isPartOf": { "@id": "https://hectronix2005.github.io/Quantum/#website" },
+          "about": { "@id": "https://hectronix2005.github.io/Quantum/#organization" },
+          "dateModified": "2026-03-24",
+          "breadcrumb": { "@id": "https://hectronix2005.github.io/Quantum/#breadcrumb" }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://hectronix2005.github.io/Quantum/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://hectronix2005.github.io/Quantum/src/index.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Property Management Services",
+              "item": "https://hectronix2005.github.io/Quantum/src/index.html#services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Pricing",
+              "item": "https://hectronix2005.github.io/Quantum/src/index.html#pricing"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Contact",
+              "item": "https://hectronix2005.github.io/Quantum/src/index.html#contact"
+            }
+          ]
         },
         {
           "@type": "FAQPage",
@@ -943,6 +1293,22 @@
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Yes! Our team is fully bilingual (English and Spanish). We serve a large Spanish-speaking community across Florida and all our services, reports, and communications are available in both languages."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What cities in Florida do you serve?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Quantum Florida Management serves property owners throughout Florida including Miami, Miami Beach, Coral Gables, Fort Lauderdale, Hollywood, Orlando, Winter Park, Kissimmee, Tampa, Brandon, Jacksonville, and all surrounding areas in Miami-Dade, Broward, Orange, Hillsborough, and Duval counties."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is a flat-fee property management company?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A flat-fee property management company charges a fixed monthly amount instead of a percentage of your rent. Quantum Florida Management charges between $149-$399/month depending on your plan, regardless of how much rent you collect. This saves most property owners hundreds of dollars per month compared to traditional 8-12% management fees."
               }
             }
           ]

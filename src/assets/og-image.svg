@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1628"/>
+      <stop offset="50%" style="stop-color:#1a2d54"/>
+      <stop offset="100%" style="stop-color:#132040"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="30%" r="35%">
+      <stop offset="0%" style="stop-color:#d4a843;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#d4a843;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="80" height="80" rx="16" fill="#2563eb"/>
+  <text x="120" y="145" font-family="Georgia,serif" font-size="56" font-weight="700" fill="#ffffff" text-anchor="middle">Q</text>
+
+  <!-- Brand name -->
+  <text x="180" y="118" font-family="Arial,sans-serif" font-size="28" font-weight="800" fill="#ffffff" letter-spacing="4">QUANTUM</text>
+  <text x="180" y="148" font-family="Arial,sans-serif" font-size="13" font-weight="500" fill="#d4a843" letter-spacing="6">FLORIDA MANAGEMENT</text>
+
+  <!-- Gold accent line -->
+  <rect x="80" y="195" width="120" height="3" rx="2" fill="#d4a843"/>
+
+  <!-- Main headline -->
+  <text x="80" y="300" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#ffffff">Your Property.</text>
+  <text x="80" y="370" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#3b82f6">Our Priority.</text>
+
+  <!-- Tagline -->
+  <text x="80" y="430" font-family="Arial,sans-serif" font-size="24" fill="rgba(255,255,255,0.65)">Flat-fee property management across Florida</text>
+  <text x="80" y="462" font-family="Arial,sans-serif" font-size="22" fill="rgba(255,255,255,0.5)">Miami · Orlando · Tampa · Jacksonville · Fort Lauderdale</text>
+
+  <!-- Price badge -->
+  <rect x="80" y="500" width="260" height="56" rx="28" fill="#2563eb"/>
+  <text x="210" y="534" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">From $149 / month</text>
+
+  <!-- Rating badge -->
+  <rect x="900" y="200" width="220" height="110" rx="16" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="1010" y="245" font-family="Arial,sans-serif" font-size="48" font-weight="800" fill="#ffffff" text-anchor="middle">4.9</text>
+  <text x="1010" y="278" font-family="Arial,sans-serif" font-size="14" fill="#d4a843" text-anchor="middle">★★★★★  127 reviews</text>
+
+  <!-- Features -->
+  <text x="900" y="360" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">✓ Licensed &amp; Insured</text>
+  <text x="900" y="392" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">✓ NARPM Member</text>
+  <text x="900" y="424" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">✓ Bilingual EN / ES</text>
+  <text x="900" y="456" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">✓ No hidden fees</text>
+  <text x="900" y="488" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.7)">✓ Cancel anytime</text>
+</svg>

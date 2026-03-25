@@ -14,6 +14,7 @@
         nav_testimonials:   { en: 'Testimonials',   es: 'Testimonios' },
         nav_cta:            { en: 'Get Started',    es: 'Comenzar' },
         nav_login:          { en: 'Log In',         es: 'Ingresar' },
+        nav_blog:           { en: 'Blog',           es: 'Blog' },
 
         // ── Hero ──
         hero_tagline:       { en: 'Licensed Property Management in Florida', es: 'Administraci\u00f3n de Propiedades Licenciada en Florida' },
@@ -384,21 +385,38 @@
     // ═══════════════════════════════════════════════════════════════
     // MOBILE NAVIGATION
     // ═══════════════════════════════════════════════════════════════
-    var navToggle = document.getElementById('navToggle');
-    var navMenu   = document.getElementById('navMenu');
+    var navToggle  = document.getElementById('navToggle');
+    var navMenu    = document.getElementById('navMenu');
+    var navOverlay = document.getElementById('navOverlay');
+
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+
+    function openMenu() {
+        navToggle.classList.add('active');
+        navMenu.classList.add('active');
+        if (navOverlay) navOverlay.classList.add('active');
+        document.body.classList.add('no-scroll');
+    }
 
     navToggle.addEventListener('click', function () {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
+        if (navMenu.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
 
+    if (navOverlay) {
+        navOverlay.addEventListener('click', closeMenu);
+    }
+
     document.querySelectorAll('.nav__link').forEach(function (link) {
-        link.addEventListener('click', function () {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
+        link.addEventListener('click', closeMenu);
     });
 
     // ═══════════════════════════════════════════════════════════════

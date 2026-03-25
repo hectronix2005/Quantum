@@ -5,35 +5,33 @@
     'use strict';
 
     // ─── SEED DATA ───────────────────────────────────────────
+    var DATA_VERSION = '2026-03-24-v2';
+
     var DEFAULT_DATA = {
         admin: { email: 'admin@quantumfloridamgmt.com', password: 'quantum2026' },
         clients: [
-            { id: 'c1', name: 'Maria Rodriguez', email: 'maria@example.com', password: 'client123', phone: '(305) 555-0001', status: 'active' },
-            { id: 'c2', name: 'James Thompson', email: 'james@example.com', password: 'client123', phone: '(407) 555-0002', status: 'active' },
-            { id: 'c3', name: 'Carlos Perez', email: 'carlos@example.com', password: 'client123', phone: '(813) 555-0003', status: 'active' }
+            { id: 'c1', name: 'Realtron LLC',     email: 'realtronllc@gmail.com',    password: 'client123', phone: '(510) 640-6439', status: 'active' },
+            { id: 'c2', name: 'Changel LLC',       email: 'da.rodriguez35@gmail.com', password: 'client123', phone: '(925) 623-6822', status: 'active' },
+            { id: 'c3', name: 'Atomy Florida LLC', email: 'atomyllc@gmail.com',       password: 'client123', phone: '(510) 640-6439', status: 'active' }
         ],
         properties: [
-            { id: 'p1', name: 'Sunset Condo #402', address: '1234 Ocean Dr, Miami Beach, FL 33139', type: 'Condo', clientId: 'c1', plan: 'Professional', status: 'active', monthlyRent: 2800 },
-            { id: 'p2', name: 'Lake View Apt 12B', address: '567 Lake Rd, Orlando, FL 32801', type: 'Apartment', clientId: 'c2', plan: 'Premium', status: 'active', monthlyRent: 2200 },
-            { id: 'p3', name: 'Bayshore Townhome', address: '890 Bay St, Tampa, FL 33602', type: 'Townhouse', clientId: 'c2', plan: 'Premium', status: 'active', monthlyRent: 3100 },
-            { id: 'p4', name: 'Palm Garden Unit 7', address: '345 Palm Ave, Fort Lauderdale, FL 33301', type: 'Condo', clientId: 'c3', plan: 'Professional', status: 'active', monthlyRent: 2500 }
+            // Realtron LLC — 4 properties
+            { id: 'p1',  name: '895 Blue Creek Dr',     address: '895 Blue Creek Dr, Haines City, FL 33844',                        type: 'House',     clientId: 'c1', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p2',  name: '3206 W Fox Squirrel Dr', address: '3206 W Fox Squirrel Dr, Kissimmee, FL 34741',                    type: 'House',     clientId: 'c1', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p3',  name: '1830 N Lauderdale Ave', address: '1830 N Lauderdale Ave, North Lauderdale, FL 33068',               type: 'Apartment', clientId: 'c1', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p4',  name: '1015 Park Ridge Cir',   address: '1015 Park Ridge Cir, Kissimmee, FL 34748',                       type: 'House',     clientId: 'c1', plan: 'Professional', status: 'active', monthlyRent: 200 },
+            // Changel LLC — 3 properties
+            { id: 'p5',  name: '1019 Park Ridge Cir',   address: '1019 Park Ridge Cir, Kissimmee, FL 34746',                       type: 'House',     clientId: 'c2', plan: 'Professional', status: 'active', monthlyRent: 200 },
+            { id: 'p6',  name: 'Mosaic Unit 536',        address: 'Mosaic At Millenia, 8282 Resort Village Dr, Unit 536, Orlando, FL 32821', type: 'Condo', clientId: 'c2', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p7',  name: 'Mosaic Unit 538',        address: 'Mosaic At Millenia, 8282 Resort Village Dr, Unit 538, Orlando, FL 32821', type: 'Condo', clientId: 'c2', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            // Atomy Florida LLC — 3 properties
+            { id: 'p8',  name: '3982 Versailles Dr',    address: '3982 Versailles Dr, Unit 3982C, Orlando, FL 32808',              type: 'Condo',     clientId: 'c3', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p9',  name: '4011 Versailles Dr',    address: '4011 Versailles Dr, Unit 4011F, Orlando, FL 32808',              type: 'Condo',     clientId: 'c3', plan: 'Professional', status: 'active', monthlyRent: 100 },
+            { id: 'p10', name: '4081 Dijon Dr',         address: '4081 Dijon Dr, Unit 4081J, Orlando, FL 32808',                   type: 'Condo',     clientId: 'c3', plan: 'Professional', status: 'active', monthlyRent: 100 }
         ],
-        financials: [
-            { id: 'f1', propertyId: 'p1', month: '2026-01', rent: 2800, expenses: 180, description: 'Monthly rent collection' },
-            { id: 'f2', propertyId: 'p1', month: '2026-02', rent: 2800, expenses: 420, description: 'Rent + AC repair' },
-            { id: 'f3', propertyId: 'p2', month: '2026-01', rent: 2200, expenses: 95, description: 'Monthly rent collection' },
-            { id: 'f4', propertyId: 'p2', month: '2026-02', rent: 2200, expenses: 150, description: 'Rent + plumbing' },
-            { id: 'f5', propertyId: 'p3', month: '2026-01', rent: 3100, expenses: 200, description: 'Monthly rent collection' },
-            { id: 'f6', propertyId: 'p3', month: '2026-02', rent: 3100, expenses: 0, description: 'Monthly rent collection' },
-            { id: 'f7', propertyId: 'p4', month: '2026-01', rent: 2500, expenses: 110, description: 'Monthly rent collection' },
-            { id: 'f8', propertyId: 'p4', month: '2026-02', rent: 2500, expenses: 850, description: 'Rent + kitchen remodel' }
-        ],
+        financials: [],
         updates: [
-            { id: 'u1', propertyId: 'p1', date: '2026-02-20', title: 'AC Maintenance Completed', description: 'Annual AC inspection and filter replacement performed by CoolAir Services. System running optimally.', type: 'maintenance' },
-            { id: 'u2', propertyId: 'p2', date: '2026-02-18', title: 'HOA Meeting Summary', description: 'Attended Feb board meeting. New parking rules effective March 1. Pool renovation approved for Q3.', type: 'hoa' },
-            { id: 'u3', propertyId: 'p3', date: '2026-02-15', title: 'Lease Renewed', description: 'Tenant lease renewed for 12 months. Rent increased 3% per market analysis.', type: 'financial' },
-            { id: 'u4', propertyId: 'p4', date: '2026-02-10', title: 'Kitchen Remodel Complete', description: 'Minor kitchen update finished: new faucet, garbage disposal, and cabinet hardware.', type: 'maintenance' },
-            { id: 'u5', propertyId: 'p1', date: '2026-02-05', title: 'February Rent Collected', description: 'Rent of $2,800 collected on time. Funds disbursed to owner account.', type: 'financial' }
+            { id: 'u1', propertyId: 'p1', date: '2026-03-24', title: 'Data imported from Google Sheets', description: '10 properties synced across 3 clients — Realtron LLC: 895 Blue Creek Dr, 3206 W Fox Squirrel Dr, 1830 N Lauderdale Ave, 1015 Park Ridge Cir. Changel LLC: 1019 Park Ridge Cir, Mosaic Unit 536, Mosaic Unit 538. Atomy Florida LLC: 3982, 4011 & 4081 Versailles/Dijon Dr.', type: 'general' }
         ],
         siteContent: {
             hero_tagline_en: 'Licensed Property Management in Florida',
@@ -64,6 +62,12 @@
 
     // ─── DATA STORE ──────────────────────────────────────────
     function getData() {
+        // Auto-reset if seed version changed
+        if (localStorage.getItem('qfm_data_version') !== DATA_VERSION) {
+            localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
+            localStorage.setItem('qfm_data_version', DATA_VERSION);
+            return JSON.parse(JSON.stringify(DEFAULT_DATA));
+        }
         var raw = localStorage.getItem('qfm_data');
         if (!raw) {
             localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
@@ -99,7 +103,8 @@
         if (sessionStorage.getItem('qfm_admin') === 'true') {
             loginScreen.style.display = 'none';
             dashboard.style.display   = 'flex';
-            loadOverview();
+            var initSec = window.location.hash.replace('#', '') || 'overview';
+            applySection(initSec);
         }
     }
 
@@ -112,7 +117,10 @@
             sessionStorage.setItem('qfm_admin', 'true');
             loginScreen.style.display = 'none';
             dashboard.style.display   = 'flex';
-            loadOverview();
+            if (!window.location.hash || window.location.hash === '#') {
+                window.location.hash = 'overview';
+            }
+            applySection(window.location.hash.replace('#', '') || 'overview');
         } else {
             document.getElementById('loginError').textContent = 'Invalid username or password';
         }
@@ -126,18 +134,23 @@
     }
 
     // ─── NAVIGATION ──────────────────────────────────────────
-    document.querySelectorAll('.sidebar__link').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            var sec = this.getAttribute('data-section');
-            document.querySelectorAll('.sidebar__link').forEach(function (l) { l.classList.remove('active'); });
-            this.classList.add('active');
-            document.querySelectorAll('.section').forEach(function (s) { s.style.display = 'none'; });
-            document.getElementById('sec-' + sec).style.display = 'block';
-            sidebar.classList.remove('open');
-            loadSection(sec);
+    var VALID_SECTIONS = ['overview', 'content', 'properties', 'clients', 'financials', 'updates'];
+
+    function navigateTo(sec) {
+        if (VALID_SECTIONS.indexOf(sec) === -1) sec = 'overview';
+        window.location.hash = sec;
+    }
+
+    function applySection(sec) {
+        if (VALID_SECTIONS.indexOf(sec) === -1) sec = 'overview';
+        document.querySelectorAll('.sidebar__link').forEach(function (l) {
+            l.classList.toggle('active', l.getAttribute('data-section') === sec);
         });
-    });
+        document.querySelectorAll('.section').forEach(function (s) { s.style.display = 'none'; });
+        document.getElementById('sec-' + sec).style.display = 'block';
+        sidebar.classList.remove('open');
+        loadSection(sec);
+    }
 
     function loadSection(sec) {
         if (sec === 'overview')    loadOverview();
@@ -147,6 +160,18 @@
         if (sec === 'financials')  loadFinancials();
         if (sec === 'updates')     loadUpdates();
     }
+
+    document.querySelectorAll('.sidebar__link').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigateTo(this.getAttribute('data-section'));
+        });
+    });
+
+    window.addEventListener('hashchange', function () {
+        var sec = window.location.hash.replace('#', '') || 'overview';
+        applySection(sec);
+    });
 
     // Mobile sidebar
     var sidebar = document.getElementById('sidebar');
@@ -311,7 +336,7 @@
             '<div class="form__group"><label>Type</label><select id="m_prop_type" class="form__input"><option' + (prop && prop.type === 'Condo' ? ' selected' : '') + '>Condo</option><option' + (prop && prop.type === 'Apartment' ? ' selected' : '') + '>Apartment</option><option' + (prop && prop.type === 'Townhouse' ? ' selected' : '') + '>Townhouse</option><option' + (prop && prop.type === 'House' ? ' selected' : '') + '>House</option></select></div>' +
             '<div class="form__group"><label>Client</label><select id="m_prop_client" class="form__input"><option value="">Select client...</option>' + clientOpts + '</select></div>' +
             '<div class="form__group"><label>Plan</label><select id="m_prop_plan" class="form__input"><option' + (prop && prop.plan === 'Essential' ? ' selected' : '') + '>Essential</option><option' + (prop && prop.plan === 'Professional' ? ' selected' : '') + '>Professional</option><option' + (prop && prop.plan === 'Premium' ? ' selected' : '') + '>Premium</option></select></div>' +
-            '<div class="form__group"><label>Monthly Rent ($)</label><input type="number" id="m_prop_rent" class="form__input" value="' + (prop ? prop.monthlyRent : '') + '"></div>' +
+            '<div class="form__group"><label>Monthly Fee ($)</label><input type="number" id="m_prop_rent" class="form__input" value="' + (prop ? prop.monthlyRent : '') + '"></div>' +
             '<div class="form__group"><label>Status</label><select id="m_prop_status" class="form__input"><option value="active"' + (prop && prop.status === 'active' ? ' selected' : '') + '>Active</option><option value="inactive"' + (prop && prop.status === 'inactive' ? ' selected' : '') + '>Inactive</option></select></div>';
         openModal(propId ? 'Edit Property' : 'Add Property', html, function () {
             var d = getData();

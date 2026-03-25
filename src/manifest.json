@@ -1,0 +1,30 @@
+{
+  "name": "Quantum Florida Management",
+  "short_name": "Quantum FL",
+  "description": "Professional flat-fee property management across Florida. Miami, Orlando, Tampa, Jacksonville.",
+  "start_url": "/Quantum/src/index.html",
+  "display": "standalone",
+  "background_color": "#0a1628",
+  "theme_color": "#0a1628",
+  "orientation": "portrait-primary",
+  "lang": "en-US",
+  "categories": ["business", "finance", "real-estate"],
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "label": "Quantum Florida Management Homepage"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
