@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /client/
+
+Sitemap: https://quantum-fpm-903c29e97960.herokuapp.com/sitemap.xml

@@ -126,7 +126,7 @@ app.post('/api/data', async (req, res) => {
 });
 
 // ─── Static files ─────────────────────────────────────────────
-app.use(express.static(ROOT));
+app.use(express.static(ROOT, { dotfiles: 'allow' }));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
