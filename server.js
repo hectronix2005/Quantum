@@ -1,54 +1,78 @@
-const express = require('express');
-const path    = require('path');
-const fs      = require('fs');
+const express    = require('express');
+const path       = require('path');
+const fs         = require('fs');
+const { MongoClient } = require('mongodb');
+
+// Load .env in development
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    require('fs').readFileSync('.env', 'utf8').split('\n').forEach(line => {
+      const [k, ...v] = line.split('=');
+      if (k && v.length) process.env[k.trim()] = v.join('=').trim();
+    });
+  } catch (_) {}
+}
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, 'src');
-const DB_PATH = path.join(__dirname, 'data', 'db.json');
 
-// ─── Persistence layer ───────────────────────────────────────
-let store = null;
+const MONGODB_URI  = process.env.MONGODB_URI;
+const DB_NAME      = 'quantumfm';
+const COLLECTION   = 'appdata';
+const DOC_ID       = 'main';
 
-function loadStore() {
-  try {
-    if (fs.existsSync(DB_PATH)) {
-      store = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
-      console.log('DB loaded from data/db.json');
+// ─── MongoDB connection ───────────────────────────────────────
+let db = null;
+
+async function connectDB() {
+  const client = new MongoClient(MONGODB_URI);
+  await client.connect();
+  db = client.db(DB_NAME);
+  console.log('Connected to MongoDB Atlas');
+
+  // Seed if collection is empty
+  const existing = await db.collection(COLLECTION).findOne({ _id: DOC_ID });
+  if (!existing) {
+    const seedPath = path.join(__dirname, 'data', 'db.json');
+    if (fs.existsSync(seedPath)) {
+      const seed = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+      await db.collection(COLLECTION).insertOne({ _id: DOC_ID, data: seed });
+      console.log('DB seeded from data/db.json');
     }
-  } catch (e) {
-    console.error('Failed to load db.json:', e.message);
-    store = null;
   }
 }
 
-function saveStore(data) {
-  try {
-    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
-    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
-  } catch (e) {
-    console.error('Failed to write db.json:', e.message);
-  }
-  store = data;
-}
-
-loadStore();
+connectDB().catch(err => {
+  console.error('MongoDB connection failed:', err.message);
+});
 
 // ─── API ─────────────────────────────────────────────────────
 app.use(express.json({ limit: '5mb' }));
 
-// GET  /api/data  — return current data (empty object if nothing seeded yet)
-app.get('/api/data', (req, res) => {
-  res.json(store || {});
+app.get('/api/data', async (req, res) => {
+  try {
+    const doc = await db.collection(COLLECTION).findOne({ _id: DOC_ID });
+    res.json(doc ? doc.data : {});
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-// POST /api/data  — save data to memory + disk
-app.post('/api/data', (req, res) => {
-  if (!req.body || typeof req.body !== 'object') {
-    return res.status(400).json({ error: 'Invalid payload' });
+app.post('/api/data', async (req, res) => {
+  try {
+    if (!req.body || typeof req.body !== 'object') {
+      return res.status(400).json({ error: 'Invalid payload' });
+    }
+    await db.collection(COLLECTION).updateOne(
+      { _id: DOC_ID },
+      { $set: { data: req.body } },
+      { upsert: true }
+    );
+    res.json({ ok: true });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
   }
-  saveStore(req.body);
-  res.json({ ok: true });
 });
 
 // ─── Static files ─────────────────────────────────────────────

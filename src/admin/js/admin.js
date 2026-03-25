@@ -61,68 +61,50 @@
     };
 
     // ─── DATA STORE ──────────────────────────────────────────
-    // Server is the source of truth. localStorage is a fast cache.
-    // DEFAULT_DATA is only used when BOTH server and localStorage are empty.
+    // MongoDB Atlas is the ONLY source of truth.
+    // No localStorage. currentData is an in-memory cache populated on login.
+
+    var currentData = null;
 
     function getData() {
-        var raw = localStorage.getItem('qfm_data');
-        if (!raw) {
-            // Nothing cached yet — return defaults (server sync will overwrite on login)
+        if (!currentData) {
+            // Fallback while server loads (should not normally happen)
             return JSON.parse(JSON.stringify(DEFAULT_DATA));
         }
-        var data = JSON.parse(raw);
-        // Fill in any missing top-level keys without wiping existing data
-        var keys = Object.keys(DEFAULT_DATA);
-        var changed = false;
-        for (var i = 0; i < keys.length; i++) {
-            var k = keys[i];
-            if (data[k] === undefined) {
-                data[k] = DEFAULT_DATA[k];
-                changed = true;
-            }
-        }
-        if (changed) localStorage.setItem('qfm_data', JSON.stringify(data));
-        return data;
+        return currentData;
     }
 
     function saveData(data) {
-        // 1. Write to localStorage immediately (synchronous, keeps UI fast)
-        localStorage.setItem('qfm_data', JSON.stringify(data));
-        // 2. Persist to server in the background (fire-and-forget)
+        // Update in-memory copy immediately (keeps UI fast)
+        currentData = data;
+        // Persist to MongoDB via server API
         fetch('/api/data', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         }).catch(function () {
-            // Server unreachable — localStorage copy is the fallback
-            console.warn('QFM: server sync failed, data safe in localStorage');
+            console.error('QFM: save to MongoDB failed');
         });
     }
 
-    // Load authoritative data from server and update localStorage cache.
-    // callback() is invoked after sync (or immediately on failure).
+    // Fetch authoritative data from MongoDB via server.
+    // callback() is invoked once data is ready.
     function syncFromServer(callback) {
         fetch('/api/data')
             .then(function (r) { return r.json(); })
             .then(function (serverData) {
                 if (serverData && serverData.clients) {
-                    // Server has real data — use it as the authoritative source
-                    localStorage.setItem('qfm_data', JSON.stringify(serverData));
+                    currentData = serverData;
                 } else {
-                    // Server is empty — push localStorage data up to server
-                    var local = localStorage.getItem('qfm_data');
-                    if (local) {
-                        fetch('/api/data', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: local
-                        }).catch(function () {});
-                    }
+                    // First run — seed MongoDB with DEFAULT_DATA
+                    currentData = JSON.parse(JSON.stringify(DEFAULT_DATA));
+                    saveData(currentData);
                 }
                 callback();
             })
             .catch(function () {
-                // Server unreachable — proceed with localStorage data
+                // Server unreachable — use DEFAULT_DATA as fallback
+                currentData = JSON.parse(JSON.stringify(DEFAULT_DATA));
                 callback();
             });
     }
