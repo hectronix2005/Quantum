@@ -95,6 +95,8 @@ select.form__input { cursor: pointer; }
 .sidebar__link:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.05); }
 .sidebar__link.active { color: var(--white); background: rgba(37,99,235,0.25); }
 .sidebar__footer { padding: 1rem 0.75rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.admin-lang-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.5rem 0.875rem; margin-bottom: 0.25rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.75); font-family: var(--font); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; border-radius: var(--radius); transition: all var(--transition); }
+.admin-lang-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
 .btn__logout { display: flex; align-items: center; gap: 0.75rem; width: 100%; padding: 0.625rem 0.875rem; background: none; border: none; color: rgba(255,255,255,0.4); font-family: var(--font); font-size: 0.875rem; cursor: pointer; border-radius: var(--radius); transition: all var(--transition); }
 .btn__logout:hover { color: var(--red); background: rgba(239,68,68,0.1); }
 .btn__logout svg { width: 1.25rem; height: 1.25rem; }

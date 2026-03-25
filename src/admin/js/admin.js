@@ -614,6 +614,34 @@
         input.type = input.type === 'password' ? 'text' : 'password';
     };
 
+    // ─── LANGUAGE ────────────────────────────────────────────
+    var LANG_KEY   = 'qfm_lang';
+    var adminLang  = localStorage.getItem(LANG_KEY) || 'en';
+
+    function translateAdmin() {
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+            el.textContent = adminLang === 'es'
+                ? (el.getAttribute('data-es') || el.getAttribute('data-en'))
+                : el.getAttribute('data-en');
+        });
+        var btn = document.getElementById('adminLangBtn');
+        if (btn) btn.innerHTML = adminLang === 'en'
+            ? '&#127482;&#127480;&nbsp;ES'
+            : '&#127466;&#127480;&nbsp;EN';
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        translateAdmin();
+        var btn = document.getElementById('adminLangBtn');
+        if (btn) {
+            btn.addEventListener('click', function () {
+                adminLang = adminLang === 'en' ? 'es' : 'en';
+                localStorage.setItem(LANG_KEY, adminLang);
+                translateAdmin();
+            });
+        }
+    });
+
     // ─── INIT ────────────────────────────────────────────────
     checkAuth();
 })();

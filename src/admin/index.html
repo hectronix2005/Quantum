@@ -58,33 +58,34 @@
             <nav class="sidebar__nav">
                 <a href="#" class="sidebar__link active" data-section="overview">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    Dashboard
+                    <span data-en="Dashboard" data-es="Panel de Control">Dashboard</span>
                 </a>
                 <a href="#" class="sidebar__link" data-section="content">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                    Website Content
+                    <span data-en="Website Content" data-es="Contenido Web">Website Content</span>
                 </a>
                 <a href="#" class="sidebar__link" data-section="properties">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                    Properties
+                    <span data-en="Properties" data-es="Propiedades">Properties</span>
                 </a>
                 <a href="#" class="sidebar__link" data-section="clients">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    Clients
+                    <span data-en="Clients" data-es="Clientes">Clients</span>
                 </a>
                 <a href="#" class="sidebar__link" data-section="financials">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    Financials
+                    <span data-en="Financials" data-es="Finanzas">Financials</span>
                 </a>
                 <a href="#" class="sidebar__link" data-section="updates">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-                    Updates
+                    <span data-en="Updates" data-es="Actualizaciones">Updates</span>
                 </a>
             </nav>
             <div class="sidebar__footer">
+                <button class="admin-lang-btn" id="adminLangBtn" aria-label="Switch language / Cambiar idioma">&#127482;&#127480;&nbsp;ES</button>
                 <button class="btn__logout" id="btnLogout">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-                    Sign Out
+                    <span data-en="Sign Out" data-es="Cerrar Sesión">Sign Out</span>
                 </button>
             </div>
         </aside>
@@ -106,29 +107,29 @@
             <!-- ──── OVERVIEW ──── -->
             <section class="section" id="sec-overview">
                 <div class="section__top">
-                    <h2>Dashboard Overview</h2>
+                    <h2 data-en="Dashboard Overview" data-es="Resumen del Panel">Dashboard Overview</h2>
                     <p class="section__date" id="currentDate"></p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card stat-card--blue">
                         <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"/></svg></div>
-                        <div><p class="stat-card__number" id="statProperties">0</p><p class="stat-card__label">Properties</p></div>
+                        <div><p class="stat-card__number" id="statProperties">0</p><p class="stat-card__label" data-en="Properties" data-es="Propiedades">Properties</p></div>
                     </div>
                     <div class="stat-card stat-card--green">
                         <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-                        <div><p class="stat-card__number" id="statClients">0</p><p class="stat-card__label">Clients</p></div>
+                        <div><p class="stat-card__number" id="statClients">0</p><p class="stat-card__label" data-en="Clients" data-es="Clientes">Clients</p></div>
                     </div>
                     <div class="stat-card stat-card--gold">
                         <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 8v1m9-5a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                        <div><p class="stat-card__number" id="statRevenue">$0</p><p class="stat-card__label">Monthly Revenue</p></div>
+                        <div><p class="stat-card__number" id="statRevenue">$0</p><p class="stat-card__label" data-en="Monthly Revenue" data-es="Ingresos Mensuales">Monthly Revenue</p></div>
                     </div>
                     <div class="stat-card stat-card--navy">
                         <div class="stat-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></div>
-                        <div><p class="stat-card__number" id="statUpdates">0</p><p class="stat-card__label">Updates</p></div>
+                        <div><p class="stat-card__number" id="statUpdates">0</p><p class="stat-card__label" data-en="Updates" data-es="Actualizaciones">Updates</p></div>
                     </div>
                 </div>
                 <div class="panel">
-                    <h3>Recent Activity</h3>
+                    <h3 data-en="Recent Activity" data-es="Actividad Reciente">Recent Activity</h3>
                     <div id="recentActivity" class="activity-list"></div>
                 </div>
             </section>
@@ -136,15 +137,15 @@
             <!-- ──── WEBSITE CONTENT ──── -->
             <section class="section" id="sec-content" style="display:none;">
                 <div class="section__top">
-                    <h2>Website Content Editor</h2>
-                    <button class="btn btn--primary btn--sm" id="btnSaveContent">Save Changes</button>
+                    <h2 data-en="Website Content Editor" data-es="Editor de Contenido">Website Content Editor</h2>
+                    <button class="btn btn--primary btn--sm" id="btnSaveContent" data-en="Save Changes" data-es="Guardar Cambios">Save Changes</button>
                 </div>
                 <div class="tabs">
-                    <button class="tab active" data-tab="tab-hero">Hero</button>
-                    <button class="tab" data-tab="tab-services">Services</button>
-                    <button class="tab" data-tab="tab-pricing">Pricing</button>
-                    <button class="tab" data-tab="tab-about">About</button>
-                    <button class="tab" data-tab="tab-images">Images</button>
+                    <button class="tab active" data-tab="tab-hero" data-en="Hero" data-es="Portada">Hero</button>
+                    <button class="tab" data-tab="tab-services" data-en="Services" data-es="Servicios">Services</button>
+                    <button class="tab" data-tab="tab-pricing" data-en="Pricing" data-es="Precios">Pricing</button>
+                    <button class="tab" data-tab="tab-about" data-en="About" data-es="Nosotros">About</button>
+                    <button class="tab" data-tab="tab-images" data-en="Images" data-es="Imágenes">Images</button>
                 </div>
 
                 <!-- Hero Tab -->
@@ -317,20 +318,20 @@
             <!-- ──── PROPERTIES ──── -->
             <section class="section" id="sec-properties" style="display:none;">
                 <div class="section__top">
-                    <h2>Properties</h2>
-                    <button class="btn btn--primary btn--sm" id="btnAddProperty">+ Add Property</button>
+                    <h2 data-en="Properties" data-es="Propiedades">Properties</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddProperty" data-en="+ Add Property" data-es="+ Agregar Propiedad">+ Add Property</button>
                 </div>
                 <div class="table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Property</th>
-                                <th>Address</th>
-                                <th>Client</th>
-                                <th>Plan</th>
-                                <th>Fee</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-en="Property" data-es="Propiedad">Property</th>
+                                <th data-en="Address" data-es="Dirección">Address</th>
+                                <th data-en="Client" data-es="Cliente">Client</th>
+                                <th data-en="Plan" data-es="Plan">Plan</th>
+                                <th data-en="Fee" data-es="Tarifa">Fee</th>
+                                <th data-en="Status" data-es="Estado">Status</th>
+                                <th data-en="Actions" data-es="Acciones">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="propertiesTable"></tbody>
@@ -341,19 +342,19 @@
             <!-- ──── CLIENTS ──── -->
             <section class="section" id="sec-clients" style="display:none;">
                 <div class="section__top">
-                    <h2>Client Accounts</h2>
-                    <button class="btn btn--primary btn--sm" id="btnAddClient">+ Add Client</button>
+                    <h2 data-en="Client Accounts" data-es="Cuentas de Clientes">Client Accounts</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddClient" data-en="+ Add Client" data-es="+ Agregar Cliente">+ Add Client</button>
                 </div>
                 <div class="table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Properties</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th data-en="Name" data-es="Nombre">Name</th>
+                                <th data-en="Email" data-es="Correo">Email</th>
+                                <th data-en="Phone" data-es="Teléfono">Phone</th>
+                                <th data-en="Properties" data-es="Propiedades">Properties</th>
+                                <th data-en="Status" data-es="Estado">Status</th>
+                                <th data-en="Actions" data-es="Acciones">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="clientsTable"></tbody>
@@ -364,30 +365,30 @@
             <!-- ──── FINANCIALS ──── -->
             <section class="section" id="sec-financials" style="display:none;">
                 <div class="section__top">
-                    <h2>Financial Overview</h2>
-                    <button class="btn btn--primary btn--sm" id="btnAddFinancial">+ Add Record</button>
+                    <h2 data-en="Financial Overview" data-es="Resumen Financiero">Financial Overview</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddFinancial" data-en="+ Add Record" data-es="+ Agregar Registro">+ Add Record</button>
                 </div>
                 <div class="stats-grid stats-grid--3">
                     <div class="stat-card stat-card--green">
-                        <div><p class="stat-card__number" id="finTotalIncome">$0</p><p class="stat-card__label">Total Income</p></div>
+                        <div><p class="stat-card__number" id="finTotalIncome">$0</p><p class="stat-card__label" data-en="Total Income" data-es="Ingresos Totales">Total Income</p></div>
                     </div>
                     <div class="stat-card stat-card--blue">
-                        <div><p class="stat-card__number" id="finTotalExpenses">$0</p><p class="stat-card__label">Total Expenses</p></div>
+                        <div><p class="stat-card__number" id="finTotalExpenses">$0</p><p class="stat-card__label" data-en="Total Expenses" data-es="Gastos Totales">Total Expenses</p></div>
                     </div>
                     <div class="stat-card stat-card--gold">
-                        <div><p class="stat-card__number" id="finNetIncome">$0</p><p class="stat-card__label">Net Income</p></div>
+                        <div><p class="stat-card__number" id="finNetIncome">$0</p><p class="stat-card__label" data-en="Net Income" data-es="Ingreso Neto">Net Income</p></div>
                     </div>
                 </div>
                 <div class="table-wrapper">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Month</th>
-                                <th>Property</th>
-                                <th>Rent</th>
-                                <th>Expenses</th>
-                                <th>Net</th>
-                                <th>Actions</th>
+                                <th data-en="Month" data-es="Mes">Month</th>
+                                <th data-en="Property" data-es="Propiedad">Property</th>
+                                <th data-en="Rent" data-es="Renta">Rent</th>
+                                <th data-en="Expenses" data-es="Gastos">Expenses</th>
+                                <th data-en="Net" data-es="Neto">Net</th>
+                                <th data-en="Actions" data-es="Acciones">Actions</th>
                             </tr>
                         </thead>
                         <tbody id="financialsTable"></tbody>
@@ -398,8 +399,8 @@
             <!-- ──── UPDATES ──── -->
             <section class="section" id="sec-updates" style="display:none;">
                 <div class="section__top">
-                    <h2>Property Updates</h2>
-                    <button class="btn btn--primary btn--sm" id="btnAddUpdate">+ New Update</button>
+                    <h2 data-en="Property Updates" data-es="Actualizaciones de Propiedades">Property Updates</h2>
+                    <button class="btn btn--primary btn--sm" id="btnAddUpdate" data-en="+ New Update" data-es="+ Nueva Actualización">+ New Update</button>
                 </div>
                 <div id="updatesList" class="updates-list"></div>
             </section>
