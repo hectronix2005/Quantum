@@ -308,59 +308,61 @@
     });
 
     // ═══════════════════════════════════════════════════════════════
-    // APPLY ADMIN CONTENT FROM LOCALSTORAGE
+    // APPLY ADMIN CONTENT FROM API (MongoDB via server)
     // ═══════════════════════════════════════════════════════════════
     (function applyAdminContent() {
-        try {
-            var raw = localStorage.getItem('qfm_data');
-            if (!raw) return;
-            var data = JSON.parse(raw);
-            var c = data.siteContent;
-            if (!c) return;
+        fetch('/api/data')
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var c = data.siteContent;
+                if (!c) return;
 
-            // Override bilingual translations with admin-edited values
-            if (c.hero_tagline_en || c.hero_tagline_es) {
-                translations.hero_tagline = { en: c.hero_tagline_en || translations.hero_tagline.en, es: c.hero_tagline_es || translations.hero_tagline.es };
-            }
-            if (c.hero_title_en || c.hero_title_es) {
-                translations.hero_title = { en: c.hero_title_en || translations.hero_title.en, es: c.hero_title_es || translations.hero_title.es };
-            }
-            if (c.hero_desc_en || c.hero_desc_es) {
-                translations.hero_description = { en: c.hero_desc_en || translations.hero_description.en, es: c.hero_desc_es || translations.hero_description.es };
-            }
-            if (c.plan1_desc_en || c.plan1_desc_es) {
-                translations.plan1_desc = { en: c.plan1_desc_en || translations.plan1_desc.en, es: c.plan1_desc_es || translations.plan1_desc.es };
-            }
-            if (c.plan2_desc_en || c.plan2_desc_es) {
-                translations.plan2_desc = { en: c.plan2_desc_en || translations.plan2_desc.en, es: c.plan2_desc_es || translations.plan2_desc.es };
-            }
-            if (c.plan3_desc_en || c.plan3_desc_es) {
-                translations.plan3_desc = { en: c.plan3_desc_en || translations.plan3_desc.en, es: c.plan3_desc_es || translations.plan3_desc.es };
-            }
-            if (c.about1_en || c.about1_es) {
-                translations.about_text1 = { en: c.about1_en || translations.about_text1.en, es: c.about1_es || translations.about_text1.es };
-            }
-            if (c.about2_en || c.about2_es) {
-                translations.about_text2 = { en: c.about2_en || translations.about_text2.en, es: c.about2_es || translations.about_text2.es };
-            }
+                // Override bilingual translations with admin-edited values
+                if (c.hero_tagline_en || c.hero_tagline_es) {
+                    translations.hero_tagline = { en: c.hero_tagline_en || translations.hero_tagline.en, es: c.hero_tagline_es || translations.hero_tagline.es };
+                }
+                if (c.hero_title_en || c.hero_title_es) {
+                    translations.hero_title = { en: c.hero_title_en || translations.hero_title.en, es: c.hero_title_es || translations.hero_title.es };
+                }
+                if (c.hero_desc_en || c.hero_desc_es) {
+                    translations.hero_description = { en: c.hero_desc_en || translations.hero_description.en, es: c.hero_desc_es || translations.hero_description.es };
+                }
+                if (c.plan1_desc_en || c.plan1_desc_es) {
+                    translations.plan1_desc = { en: c.plan1_desc_en || translations.plan1_desc.en, es: c.plan1_desc_es || translations.plan1_desc.es };
+                }
+                if (c.plan2_desc_en || c.plan2_desc_es) {
+                    translations.plan2_desc = { en: c.plan2_desc_en || translations.plan2_desc.en, es: c.plan2_desc_es || translations.plan2_desc.es };
+                }
+                if (c.plan3_desc_en || c.plan3_desc_es) {
+                    translations.plan3_desc = { en: c.plan3_desc_en || translations.plan3_desc.en, es: c.plan3_desc_es || translations.plan3_desc.es };
+                }
+                if (c.about1_en || c.about1_es) {
+                    translations.about_text1 = { en: c.about1_en || translations.about_text1.en, es: c.about1_es || translations.about_text1.es };
+                }
+                if (c.about2_en || c.about2_es) {
+                    translations.about_text2 = { en: c.about2_en || translations.about_text2.en, es: c.about2_es || translations.about_text2.es };
+                }
 
-            // Update pricing amounts
-            var p1 = document.getElementById('price1');
-            var p2 = document.getElementById('price2');
-            var p3 = document.getElementById('price3');
-            if (p1 && c.price1) p1.textContent = c.price1;
-            if (p2 && c.price2) p2.textContent = c.price2;
-            if (p3 && c.price3) p3.textContent = c.price3;
+                // Update pricing amounts
+                var p1 = document.getElementById('price1');
+                var p2 = document.getElementById('price2');
+                var p3 = document.getElementById('price3');
+                if (p1 && c.price1) p1.textContent = c.price1;
+                if (p2 && c.price2) p2.textContent = c.price2;
+                if (p3 && c.price3) p3.textContent = c.price3;
 
-            // Update stat counters (data-target drives the animation)
-            var s1 = document.getElementById('statProperties');
-            var s2 = document.getElementById('statSatisfaction');
-            var s3 = document.getElementById('statYears');
-            if (s1 && c.stat_properties)  s1.setAttribute('data-target', c.stat_properties);
-            if (s2 && c.stat_satisfaction) s2.setAttribute('data-target', c.stat_satisfaction);
-            if (s3 && c.stat_years)        s3.setAttribute('data-target', c.stat_years);
+                // Update stat counters (data-target drives the animation)
+                var s1 = document.getElementById('statProperties');
+                var s2 = document.getElementById('statSatisfaction');
+                var s3 = document.getElementById('statYears');
+                if (s1 && c.stat_properties)  s1.setAttribute('data-target', c.stat_properties);
+                if (s2 && c.stat_satisfaction) s2.setAttribute('data-target', c.stat_satisfaction);
+                if (s3 && c.stat_years)        s3.setAttribute('data-target', c.stat_years);
 
-        } catch (e) { /* silently ignore parse errors */ }
+                // Re-apply current language now that translations are updated
+                setLanguage(currentLang);
+            })
+            .catch(function () { /* silently ignore if API unreachable */ });
     })();
 
     // Apply saved language on load
