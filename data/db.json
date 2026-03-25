@@ -1,0 +1,49 @@
+{
+  "admin": { "email": "admin@quantumfloridamgmt.com", "password": "quantum2026" },
+  "clients": [
+    { "id": "c1", "name": "Realtron LLC",     "email": "realtronllc@gmail.com",    "password": "client123", "phone": "(510) 640-6439", "status": "active" },
+    { "id": "c2", "name": "Changel LLC",       "email": "da.rodriguez35@gmail.com", "password": "client123", "phone": "(925) 623-6822", "status": "active" },
+    { "id": "c3", "name": "Atomy Florida LLC", "email": "atomyllc@gmail.com",       "password": "client123", "phone": "(510) 640-6439", "status": "active" }
+  ],
+  "properties": [
+    { "id": "p1",  "name": "895 Blue Creek Dr",      "address": "895 Blue Creek Dr, Haines City, FL 33844",                               "type": "House",     "clientId": "c1", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p2",  "name": "3206 W Fox Squirrel Dr", "address": "3206 W Fox Squirrel Dr, Kissimmee, FL 34741",                            "type": "House",     "clientId": "c1", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p3",  "name": "1830 N Lauderdale Ave",  "address": "1830 N Lauderdale Ave, North Lauderdale, FL 33068",                      "type": "Apartment", "clientId": "c1", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p4",  "name": "1015 Park Ridge Cir",    "address": "1015 Park Ridge Cir, Kissimmee, FL 34748",                               "type": "House",     "clientId": "c1", "plan": "Professional", "status": "active", "monthlyRent": 200 },
+    { "id": "p5",  "name": "1019 Park Ridge Cir",    "address": "1019 Park Ridge Cir, Kissimmee, FL 34746",                               "type": "House",     "clientId": "c2", "plan": "Professional", "status": "active", "monthlyRent": 200 },
+    { "id": "p6",  "name": "Mosaic Unit 536",         "address": "Mosaic At Millenia, 8282 Resort Village Dr, Unit 536, Orlando, FL 32821","type": "Condo",     "clientId": "c2", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p7",  "name": "Mosaic Unit 538",         "address": "Mosaic At Millenia, 8282 Resort Village Dr, Unit 538, Orlando, FL 32821","type": "Condo",     "clientId": "c2", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p8",  "name": "3982 Versailles Dr",     "address": "3982 Versailles Dr, Unit 3982C, Orlando, FL 32808",                      "type": "Condo",     "clientId": "c3", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p9",  "name": "4011 Versailles Dr",     "address": "4011 Versailles Dr, Unit 4011F, Orlando, FL 32808",                      "type": "Condo",     "clientId": "c3", "plan": "Professional", "status": "active", "monthlyRent": 100 },
+    { "id": "p10", "name": "4081 Dijon Dr",          "address": "4081 Dijon Dr, Unit 4081J, Orlando, FL 32808",                           "type": "Condo",     "clientId": "c3", "plan": "Professional", "status": "active", "monthlyRent": 100 }
+  ],
+  "financials": [],
+  "updates": [
+    { "id": "u1", "propertyId": "p1", "date": "2026-03-24", "title": "Data imported from Google Sheets", "description": "10 properties synced across 3 clients — Realtron LLC: 895 Blue Creek Dr, 3206 W Fox Squirrel Dr, 1830 N Lauderdale Ave, 1015 Park Ridge Cir. Changel LLC: 1019 Park Ridge Cir, Mosaic Unit 536, Mosaic Unit 538. Atomy Florida LLC: 3982, 4011 & 4081 Versailles/Dijon Dr.", "type": "general" }
+  ],
+  "siteContent": {
+    "hero_tagline_en": "Licensed Property Management in Florida",
+    "hero_tagline_es": "Administracion de Propiedades Licenciada en Florida",
+    "hero_title_en": "Your Property. Our Priority.",
+    "hero_title_es": "Tu Propiedad. Nuestra Prioridad.",
+    "hero_desc_en": "Full-service property management with a simple, transparent flat monthly fee.",
+    "hero_desc_es": "Administracion integral de propiedades con una tarifa mensual fija, simple y transparente.",
+    "stat_properties": 500,
+    "stat_satisfaction": 98,
+    "stat_years": 15,
+    "price1": 149,
+    "price2": 249,
+    "price3": 399,
+    "plan1_desc_en": "Perfect for single-unit condos and apartments",
+    "plan1_desc_es": "Perfecto para condominios y apartamentos de una unidad",
+    "plan2_desc_en": "Full-service management for rental properties",
+    "plan2_desc_es": "Administracion completa para propiedades en alquiler",
+    "plan3_desc_en": "Multi-unit portfolios & investment properties",
+    "plan3_desc_es": "Portafolios multi-unidad y propiedades de inversion",
+    "about1_en": "Quantum Florida Management was founded on a simple principle: property owners deserve transparent, reliable management at a fair price.",
+    "about1_es": "Quantum Florida Management fue fundada bajo un principio simple: los propietarios merecen una administracion transparente, confiable y a un precio justo.",
+    "about2_en": "Our team brings together licensed property managers, experienced maintenance coordinators, and strong partnerships with authorized Florida realtors.",
+    "about2_es": "Nuestro equipo reune administradores de propiedades licenciados, coordinadores de mantenimiento con experiencia y solidas alianzas con agentes inmobiliarios autorizados en Florida."
+  },
+  "images": {}
+}

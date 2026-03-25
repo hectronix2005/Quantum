@@ -61,21 +61,19 @@
     };
 
     // ─── DATA STORE ──────────────────────────────────────────
+    // Server is the source of truth. localStorage is a fast cache.
+    // DEFAULT_DATA is only used when BOTH server and localStorage are empty.
+
     function getData() {
-        // Auto-reset if seed version changed
-        if (localStorage.getItem('qfm_data_version') !== DATA_VERSION) {
-            localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
-            localStorage.setItem('qfm_data_version', DATA_VERSION);
-            return JSON.parse(JSON.stringify(DEFAULT_DATA));
-        }
         var raw = localStorage.getItem('qfm_data');
         if (!raw) {
-            localStorage.setItem('qfm_data', JSON.stringify(DEFAULT_DATA));
+            // Nothing cached yet — return defaults (server sync will overwrite on login)
             return JSON.parse(JSON.stringify(DEFAULT_DATA));
         }
         var data = JSON.parse(raw);
-        var changed = false;
+        // Fill in any missing top-level keys without wiping existing data
         var keys = Object.keys(DEFAULT_DATA);
+        var changed = false;
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
             if (data[k] === undefined) {
@@ -88,7 +86,45 @@
     }
 
     function saveData(data) {
+        // 1. Write to localStorage immediately (synchronous, keeps UI fast)
         localStorage.setItem('qfm_data', JSON.stringify(data));
+        // 2. Persist to server in the background (fire-and-forget)
+        fetch('/api/data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(function () {
+            // Server unreachable — localStorage copy is the fallback
+            console.warn('QFM: server sync failed, data safe in localStorage');
+        });
+    }
+
+    // Load authoritative data from server and update localStorage cache.
+    // callback() is invoked after sync (or immediately on failure).
+    function syncFromServer(callback) {
+        fetch('/api/data')
+            .then(function (r) { return r.json(); })
+            .then(function (serverData) {
+                if (serverData && serverData.clients) {
+                    // Server has real data — use it as the authoritative source
+                    localStorage.setItem('qfm_data', JSON.stringify(serverData));
+                } else {
+                    // Server is empty — push localStorage data up to server
+                    var local = localStorage.getItem('qfm_data');
+                    if (local) {
+                        fetch('/api/data', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: local
+                        }).catch(function () {});
+                    }
+                }
+                callback();
+            })
+            .catch(function () {
+                // Server unreachable — proceed with localStorage data
+                callback();
+            });
     }
 
     function genId() {
@@ -101,29 +137,34 @@
 
     function checkAuth() {
         if (sessionStorage.getItem('qfm_admin') === 'true') {
-            loginScreen.style.display = 'none';
-            dashboard.style.display   = 'flex';
-            var initSec = window.location.hash.replace('#', '') || 'overview';
-            applySection(initSec);
+            syncFromServer(function () {
+                loginScreen.style.display = 'none';
+                dashboard.style.display   = 'flex';
+                var initSec = window.location.hash.replace('#', '') || 'overview';
+                applySection(initSec);
+            });
         }
     }
 
     document.getElementById('loginForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        var data = getData();
         var user = document.getElementById('loginUser').value;
         var pass = document.getElementById('loginPass').value;
-        if (user.toLowerCase() === data.admin.email.toLowerCase() && pass === data.admin.password) {
-            sessionStorage.setItem('qfm_admin', 'true');
-            loginScreen.style.display = 'none';
-            dashboard.style.display   = 'flex';
-            if (!window.location.hash || window.location.hash === '#') {
-                window.location.hash = 'overview';
+        // Sync from server first so credentials are up to date
+        syncFromServer(function () {
+            var data = getData();
+            if (user.toLowerCase() === data.admin.email.toLowerCase() && pass === data.admin.password) {
+                sessionStorage.setItem('qfm_admin', 'true');
+                loginScreen.style.display = 'none';
+                dashboard.style.display   = 'flex';
+                if (!window.location.hash || window.location.hash === '#') {
+                    window.location.hash = 'overview';
+                }
+                applySection(window.location.hash.replace('#', '') || 'overview');
+            } else {
+                document.getElementById('loginError').textContent = 'Invalid username or password';
             }
-            applySection(window.location.hash.replace('#', '') || 'overview');
-        } else {
-            document.getElementById('loginError').textContent = 'Invalid username or password';
-        }
+        });
     });
 
     document.getElementById('btnLogout').addEventListener('click', logout);
