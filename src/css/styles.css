@@ -145,6 +145,7 @@ ul {
     align-items: center;
     justify-content: center;
     padding: 0.875rem 2rem;
+    min-height: 44px;
     font-family: var(--font-primary);
     font-size: 0.9375rem;
     font-weight: 600;
@@ -1311,7 +1312,7 @@ ul {
 /* ─── Scroll Reveal Animations ─────────────────────────────────── */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -1332,6 +1333,15 @@ ul {
 .testimonials__grid .reveal:nth-child(2) { transition-delay: 0.1s; }
 .testimonials__grid .reveal:nth-child(3) { transition-delay: 0.2s; }
 
+.why-us__features .reveal:nth-child(2) { transition-delay: 0.1s; }
+.why-us__features .reveal:nth-child(3) { transition-delay: 0.2s; }
+.why-us__features .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+.process__grid .reveal:nth-child(1) { transition-delay: 0s; }
+.process__grid .reveal:nth-child(3) { transition-delay: 0.1s; }
+.process__grid .reveal:nth-child(5) { transition-delay: 0.2s; }
+.process__grid .reveal:nth-child(7) { transition-delay: 0.3s; }
+
 /* ─── Mobile Menu Overlay ─────────────────────────────────────── */
 .nav__overlay {
     display: none;
@@ -1346,6 +1356,15 @@ ul {
 .nav__overlay.active {
     display: block;
     opacity: 1;
+}
+
+/* ─── Touch device card elevation ──────────────────────────────── */
+@media (hover: none) {
+    .service__card,
+    .pricing__card,
+    .testimonial__card {
+        box-shadow: var(--shadow-md);
+    }
 }
 
 /* ─── Responsive Design ───────────────────────────────────────── */
@@ -1413,7 +1432,6 @@ ul {
     }
 
     .process__step {
-        max-width: 240px;
         padding: 0 1rem;
     }
 
@@ -1497,14 +1515,14 @@ ul {
 
     .pricing__grid {
         grid-template-columns: 1fr;
-        max-width: 420px;
-        margin: 0 auto;
+        gap: 1.5rem;
     }
 
     .hero__stats {
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        text-align: center;
     }
 
     .hero__title {
@@ -1541,12 +1559,12 @@ ul {
     }
 
     .about__credentials {
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 1rem;
     }
 
     .footer__grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
 
@@ -1606,7 +1624,11 @@ ul {
     }
 
     .hero__container {
-        padding: 3rem 1rem;
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero__scroll {
+        display: none;
     }
 
     .service__card,

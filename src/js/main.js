@@ -501,7 +501,7 @@
     // SCROLL REVEAL ANIMATION
     // ═══════════════════════════════════════════════════════════════
     var revealElements = document.querySelectorAll(
-        '.service__card, .pricing__card, .testimonial__card, .process__step, .why-us__feature, .comparison__card'
+        '.service__card, .pricing__card, .testimonial__card, .process__step, .why-us__feature, .comparison__card, .section__header'
     );
 
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -511,7 +511,7 @@
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
     revealElements.forEach(function (el) {
         el.classList.add('reveal');
