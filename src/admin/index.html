@@ -11,8 +11,40 @@
 </head>
 <body>
 
+    <!-- ════════ LOGIN SCREEN ════════ -->
+    <div class="login" id="loginScreen">
+        <div class="login__card">
+            <div class="login__logo">
+                <span class="logo__q">Q</span>
+                <div>
+                    <span class="logo__quantum">QUANTUM</span>
+                    <span class="logo__florida">FLORIDA MANAGEMENT</span>
+                </div>
+            </div>
+            <h1>Admin Portal</h1>
+            <p class="login__subtitle">Sign in to manage your platform</p>
+            <form id="loginForm" class="login__form">
+                <div class="form__group">
+                    <label>Email</label>
+                    <input type="email" id="loginUser" placeholder="admin@quantumfloridamgmt.com" required>
+                </div>
+                <div class="form__group">
+                    <label>Password</label>
+                    <div class="input__password">
+                        <input type="password" id="loginPass" placeholder="Enter password" required>
+                        <button type="button" class="btn__eye" onclick="togglePassword('loginPass', this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="login__error" id="loginError"></p>
+                <button type="submit" class="btn btn--primary btn--full">Sign In</button>
+            </form>
+        </div>
+    </div>
+
     <!-- ════════ DASHBOARD ════════ -->
-    <div class="dashboard" id="dashboard">
+    <div class="dashboard" id="dashboard" style="display:none;">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar__logo">

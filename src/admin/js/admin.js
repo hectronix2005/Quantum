@@ -114,15 +114,46 @@
     }
 
     // ─── AUTH ────────────────────────────────────────────────
-    // Authentication is handled server-side via HTTP Basic Auth.
-    // If the browser reaches this JS, the user is already authenticated.
+    var loginScreen = document.getElementById('loginScreen');
+    var dashboard   = document.getElementById('dashboard');
+
+    function checkAuth() {
+        if (sessionStorage.getItem('qfm_admin') === 'true') {
+            syncFromServer(function () {
+                loginScreen.style.display = 'none';
+                dashboard.style.display   = 'flex';
+                var initSec = window.location.hash.replace('#', '') || 'overview';
+                applySection(initSec);
+            });
+        }
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var user = document.getElementById('loginUser').value;
+        var pass = document.getElementById('loginPass').value;
+        syncFromServer(function () {
+            var data = getData();
+            if (user.toLowerCase() === data.admin.email.toLowerCase() && pass === data.admin.password) {
+                sessionStorage.setItem('qfm_admin', 'true');
+                loginScreen.style.display = 'none';
+                dashboard.style.display   = 'flex';
+                if (!window.location.hash || window.location.hash === '#') {
+                    window.location.hash = 'overview';
+                }
+                applySection(window.location.hash.replace('#', '') || 'overview');
+            } else {
+                document.getElementById('loginError').textContent = 'Invalid username or password';
+            }
+        });
+    });
 
     document.getElementById('btnLogout').addEventListener('click', logout);
     document.getElementById('btnLogoutMobile').addEventListener('click', logout);
     function logout() {
-        // Redirect to /admin/logout which always returns 401,
-        // causing the browser to discard the cached Basic Auth credentials.
-        window.location.href = '/admin/logout';
+        sessionStorage.removeItem('qfm_admin');
+        loginScreen.style.display = 'flex';
+        dashboard.style.display   = 'none';
     }
 
     // ─── NAVIGATION ──────────────────────────────────────────
@@ -612,8 +643,5 @@
     });
 
     // ─── INIT ────────────────────────────────────────────────
-    syncFromServer(function () {
-        var initSec = window.location.hash.replace('#', '') || 'overview';
-        applySection(initSec);
-    });
+    checkAuth();
 })();

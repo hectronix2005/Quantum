@@ -47,34 +47,6 @@ connectDB().catch(err => {
   console.error('MongoDB connection failed:', err.message);
 });
 
-// ─── Admin credentials (set via env vars on Heroku) ──────────
-const ADMIN_USER = process.env.ADMIN_USER || 'admin';
-const ADMIN_PASS = process.env.ADMIN_PASS || 'quantum2026';
-
-// Logout: always returns 401 so the browser discards cached credentials
-app.get('/admin/logout', (req, res) => {
-  res.set('WWW-Authenticate', 'Basic realm="Quantum FPM Admin"');
-  res.status(401).send(
-    '<!DOCTYPE html><html><head>' +
-    '<meta http-equiv="refresh" content="1;url=/">' +
-    '</head><body style="font-family:sans-serif;padding:2rem">' +
-    'Signing out&hellip;</body></html>'
-  );
-});
-
-// Protect all /admin routes with HTTP Basic Auth
-app.use('/admin', function (req, res, next) {
-  const auth = req.headers.authorization;
-  if (auth && auth.startsWith('Basic ')) {
-    const decoded = Buffer.from(auth.slice(6), 'base64').toString();
-    const sep = decoded.indexOf(':');
-    const u = decoded.slice(0, sep);
-    const p = decoded.slice(sep + 1);
-    if (u === ADMIN_USER && p === ADMIN_PASS) return next();
-  }
-  res.set('WWW-Authenticate', 'Basic realm="Quantum FPM Admin"');
-  return res.status(401).send('Admin access required.');
-});
 
 // ─── Security headers ────────────────────────────────────────
 app.use((req, res, next) => {
