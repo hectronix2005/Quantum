@@ -40,12 +40,17 @@
         .catch(function () {});
 
     // ─── CSRF TOKEN ───────────────────────────────────────────
+    // Los botones se activan cuando el token ya está en los formularios.
+    var submitBtns = document.querySelectorAll('form button[type="submit"]');
+    submitBtns.forEach(function (b) { b.disabled = true; });
+
     fetch('/auth/csrf', { credentials: 'same-origin' })
         .then(function (r) { return r.json(); })
         .then(function (j) {
             document.querySelectorAll('.js-csrf').forEach(function (el) {
                 el.value = j.csrfToken;
             });
+            submitBtns.forEach(function (b) { b.disabled = false; });
         })
         .catch(function () {
             errorEl.textContent = 'Could not reach the server. Please reload the page.';
