@@ -4,4 +4,4 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /client/
 
-Sitemap: https://qfm-portal-c166fcaa67cc.herokuapp.com/sitemap.xml
+Sitemap: https://qfm.tail0be41e.ts.net/sitemap.xml
