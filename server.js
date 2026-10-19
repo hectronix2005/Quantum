@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, 'src');
 
 const MONGODB_URI  = process.env.MONGODB_URI;
-const DB_NAME      = 'quantumfm';
+const DB_NAME      = process.env.DB_NAME || 'quantumfm';
 const COLLECTION   = 'appdata';
 const DOC_ID       = 'main';
 
@@ -74,27 +74,19 @@ app.use(express.json({ limit: '5mb' }));
 
 app.get('/api/data', async (req, res) => {
   try {
+    // Público: solo el contenido de la web. Admin, clientes y finanzas no salen
+    // hasta que haya autenticación en el servidor.
     const doc = await db.collection(COLLECTION).findOne({ _id: DOC_ID });
-    res.json(doc ? doc.data : {});
+    res.json({ siteContent: (doc && doc.data && doc.data.siteContent) || {} });
   } catch (e) {
-    res.status(500).json({ error: e.message });
+    console.error('GET /api/data:', e.message);
+    res.status(500).json({ error: 'Internal error' });
   }
 });
 
-app.post('/api/data', async (req, res) => {
-  try {
-    if (!req.body || typeof req.body !== 'object') {
-      return res.status(400).json({ error: 'Invalid payload' });
-    }
-    await db.collection(COLLECTION).updateOne(
-      { _id: DOC_ID },
-      { $set: { data: req.body } },
-      { upsert: true }
-    );
-    res.json({ ok: true });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
+// Escritura cerrada hasta que haya autenticación en el servidor.
+app.post('/api/data', (req, res) => {
+  res.status(403).json({ error: 'Forbidden' });
 });
 
 // ─── Static files ─────────────────────────────────────────────
