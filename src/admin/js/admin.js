@@ -8,11 +8,10 @@
     var DATA_VERSION = '2026-03-24-v2';
 
     var DEFAULT_DATA = {
-        admin: { email: 'admin@quantumfloridamgmt.com', password: 'quantum2026' },
         clients: [
-            { id: 'c1', name: 'Realtron LLC',     email: 'realtronllc@gmail.com',    password: 'client123', phone: '(510) 640-6439', status: 'active' },
-            { id: 'c2', name: 'Changel LLC',       email: 'da.rodriguez35@gmail.com', password: 'client123', phone: '(925) 623-6822', status: 'active' },
-            { id: 'c3', name: 'Atomy Florida LLC', email: 'atomyllc@gmail.com',       password: 'client123', phone: '(510) 640-6439', status: 'active' }
+            { id: 'c1', name: 'Realtron LLC',     email: 'realtronllc@gmail.com', phone: '(510) 640-6439', status: 'active' },
+            { id: 'c2', name: 'Changel LLC',       email: 'da.rodriguez35@gmail.com', phone: '(925) 623-6822', status: 'active' },
+            { id: 'c3', name: 'Atomy Florida LLC', email: 'atomyllc@gmail.com', phone: '(510) 640-6439', status: 'active' }
         ],
         properties: [
             // Realtron LLC — 4 properties
@@ -61,51 +60,44 @@
     };
 
     // ─── DATA STORE ──────────────────────────────────────────
-    // MongoDB Atlas is the ONLY source of truth.
-    // No localStorage. currentData is an in-memory cache populated on login.
-
+    // MongoDB es la única fuente de verdad; se accede solo con sesión de admin.
     var currentData = null;
 
     function getData() {
-        if (!currentData) {
-            // Fallback while server loads (should not normally happen)
-            return JSON.parse(JSON.stringify(DEFAULT_DATA));
-        }
         return currentData;
     }
 
     function saveData(data) {
-        // Update in-memory copy immediately (keeps UI fast)
         currentData = data;
-        // Persist to MongoDB via server API
-        fetch('/api/data', {
-            method: 'POST',
+        return fetch('/api/admin/data', {
+            method: 'PUT',
+            credentials: 'same-origin',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
+        }).then(function (r) {
+            if (r.status === 401) { goToLogin(); return false; }
+            if (!r.ok) throw new Error('Could not save changes');
+            return true;
         }).catch(function () {
-            console.error('QFM: save to MongoDB failed');
+            toast('Could not save changes', 'error');
+            return false;
         });
     }
 
-    // Fetch authoritative data from MongoDB via server.
-    // callback() is invoked once data is ready.
     function syncFromServer(callback) {
-        fetch('/api/data')
-            .then(function (r) { return r.json(); })
+        fetch('/api/admin/data', { credentials: 'same-origin' })
+            .then(function (r) {
+                if (r.status === 401) { goToLogin(); return null; }
+                if (!r.ok) throw new Error('load failed');
+                return r.json();
+            })
             .then(function (serverData) {
-                if (serverData && serverData.clients) {
-                    currentData = serverData;
-                } else {
-                    // First run — seed MongoDB with DEFAULT_DATA
-                    currentData = JSON.parse(JSON.stringify(DEFAULT_DATA));
-                    saveData(currentData);
-                }
+                if (!serverData) return;
+                currentData = serverData;
                 callback();
             })
             .catch(function () {
-                // Server unreachable — use DEFAULT_DATA as fallback
-                currentData = JSON.parse(JSON.stringify(DEFAULT_DATA));
-                callback();
+                toast('Could not load data from the server', 'error');
             });
     }
 
@@ -113,47 +105,48 @@
         return '_' + Math.random().toString(36).substr(2, 9);
     }
 
-    // ─── AUTH ────────────────────────────────────────────────
-    var loginScreen = document.getElementById('loginScreen');
-    var dashboard   = document.getElementById('dashboard');
+    // ─── AUTH (servidor) ─────────────────────────────────────
+    var dashboard = document.getElementById('dashboard');
 
-    function checkAuth() {
-        if (sessionStorage.getItem('qfm_admin') === 'true') {
-            syncFromServer(function () {
-                loginScreen.style.display = 'none';
-                dashboard.style.display   = 'flex';
-                var initSec = window.location.hash.replace('#', '') || 'overview';
-                applySection(initSec);
-            });
-        }
+    function goToLogin() {
+        window.location.href = '/login/';
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var user = document.getElementById('loginUser').value;
-        var pass = document.getElementById('loginPass').value;
+    function checkAuth() {
         syncFromServer(function () {
-            var data = getData();
-            if (user.toLowerCase() === data.admin.email.toLowerCase() && pass === data.admin.password) {
-                sessionStorage.setItem('qfm_admin', 'true');
-                loginScreen.style.display = 'none';
-                dashboard.style.display   = 'flex';
-                if (!window.location.hash || window.location.hash === '#') {
-                    window.location.hash = 'overview';
-                }
-                applySection(window.location.hash.replace('#', '') || 'overview');
-            } else {
-                document.getElementById('loginError').textContent = 'Invalid username or password';
-            }
+            dashboard.style.display = 'flex';
+            var initSec = window.location.hash.replace('#', '') || 'overview';
+            applySection(initSec);
         });
-    });
+    }
 
     document.getElementById('btnLogout').addEventListener('click', logout);
     document.getElementById('btnLogoutMobile').addEventListener('click', logout);
     function logout() {
-        sessionStorage.removeItem('qfm_admin');
-        loginScreen.style.display = 'flex';
-        dashboard.style.display   = 'none';
+        fetch('/auth/csrf', { credentials: 'same-origin' })
+            .then(function (r) { return r.json(); })
+            .then(function (j) {
+                return fetch('/auth/signout', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'csrfToken=' + encodeURIComponent(j.csrfToken)
+                });
+            })
+            .finally(goToLogin);
+    }
+
+    function setClientPassword(clientId, password) {
+        return fetch('/api/admin/clients/' + encodeURIComponent(clientId) + '/password', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: password })
+        }).then(function (r) {
+            return r.json().then(function (j) {
+                if (!r.ok) throw new Error(j.error || 'Could not set password');
+            });
+        });
     }
 
     // ─── NAVIGATION ──────────────────────────────────────────
@@ -415,7 +408,7 @@
         var html =
             '<div class="form__group"><label>Full Name</label><input type="text" id="m_cl_name" class="form__input" value="' + (cl ? cl.name : '') + '"></div>' +
             '<div class="form__group"><label>Email (used for login)</label><input type="email" id="m_cl_email" class="form__input" value="' + (cl ? cl.email : '') + '"></div>' +
-            '<div class="form__group"><label>Password</label><input type="text" id="m_cl_pass" class="form__input" value="' + (cl ? cl.password : 'client123') + '"></div>' +
+            '<div class="form__group"><label>' + (cl && cl.hasPassword ? 'New password (leave blank to keep)' : 'Password (min. 10 characters)') + '</label><input type="password" id="m_cl_pass" class="form__input" autocomplete="new-password" maxlength="128"></div>' +
             '<div class="form__group"><label>Phone</label><input type="tel" id="m_cl_phone" class="form__input" value="' + (cl ? cl.phone : '') + '"></div>' +
             '<div class="form__group"><label>Status</label><select id="m_cl_status" class="form__input"><option value="active"' + (cl && cl.status === 'active' ? ' selected' : '') + '>Active</option><option value="inactive"' + (cl && cl.status === 'inactive' ? ' selected' : '') + '>Inactive</option></select></div>';
         openModal(clientId ? 'Edit Client' : 'Add Client', html, function () {
@@ -424,19 +417,32 @@
                 id: clientId || genId(),
                 name: document.getElementById('m_cl_name').value,
                 email: document.getElementById('m_cl_email').value,
-                password: document.getElementById('m_cl_pass').value,
                 phone: document.getElementById('m_cl_phone').value,
                 status: document.getElementById('m_cl_status').value
             };
+            var newPass = document.getElementById('m_cl_pass').value;
+            if (newPass && newPass.length < 10) {
+                toast('Password must be at least 10 characters', 'error');
+                return;
+            }
             if (clientId) {
                 var idx = d.clients.findIndex(function (c) { return c.id === clientId; });
-                if (idx !== -1) d.clients[idx] = obj;
+                if (idx !== -1) { obj.hasPassword = d.clients[idx].hasPassword; d.clients[idx] = obj; }
             } else {
                 d.clients.push(obj);
             }
-            saveData(d);
             loadClients();
-            toast('Client saved!', 'success');
+            // La contraseña se fija cuando el cliente ya existe en el servidor.
+            saveData(d)
+                .then(function (saved) {
+                    if (!saved) throw new Error('Client not saved');
+                    return newPass ? setClientPassword(obj.id, newPass) : null;
+                })
+                .then(function () {
+                    if (newPass) obj.hasPassword = true;
+                    toast(newPass ? 'Client and password saved!' : 'Client saved!', 'success');
+                })
+                .catch(function (e) { toast(e.message, 'error'); });
         });
     }
 

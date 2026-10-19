@@ -1,49 +1,36 @@
-const express    = require('express');
-const path       = require('path');
-const fs         = require('fs');
-const { MongoClient } = require('mongodb');
+import './lib/env.js';
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import rateLimit from 'express-rate-limit';
+import { ExpressAuth } from '@auth/express';
+import { authConfig } from './lib/auth.js';
+import { apiRouter } from './lib/api.js';
+import { connectDB } from './lib/store.js';
 
-// Load .env in development
-if (process.env.NODE_ENV !== 'production') {
-  try {
-    require('fs').readFileSync('.env', 'utf8').split('\n').forEach(line => {
-      const [k, ...v] = line.split('=');
-      if (k && v.length) process.env[k.trim()] = v.join('=').trim();
-    });
-  } catch (_) {}
-}
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.BIND_HOST || '0.0.0.0';
 const ROOT = path.join(__dirname, 'src');
 
 const MONGODB_URI  = process.env.MONGODB_URI;
 const DB_NAME      = process.env.DB_NAME || 'quantumfm';
-const COLLECTION   = 'appdata';
-const DOC_ID       = 'main';
 
-// ─── MongoDB connection ───────────────────────────────────────
-let db = null;
-
-async function connectDB() {
-  const client = new MongoClient(MONGODB_URI);
-  await client.connect();
-  db = client.db(DB_NAME);
-  console.log('Connected to MongoDB Atlas');
-
-  // Seed if collection is empty
-  const existing = await db.collection(COLLECTION).findOne({ _id: DOC_ID });
-  if (!existing) {
-    const seedPath = path.join(__dirname, 'data', 'db.json');
-    if (fs.existsSync(seedPath)) {
-      const seed = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
-      await db.collection(COLLECTION).insertOne({ _id: DOC_ID, data: seed });
-      console.log('DB seeded from data/db.json');
-    }
+for (const key of ['MONGODB_URI', 'AUTH_SECRET']) {
+  if (!process.env[key]) {
+    console.error(`Missing required env var ${key}`);
+    process.exit(1);
   }
 }
 
-connectDB().catch(err => {
+// Un salto de proxy (Heroku router o Tailscale Funnel): req.ip y req.protocol reales.
+app.set('trust proxy', 1);
+app.disable('x-powered-by');
+
+// ─── MongoDB connection ───────────────────────────────────────
+connectDB(MONGODB_URI, DB_NAME, __dirname).catch(err => {
   console.error('MongoDB connection failed:', err.message);
 });
 
@@ -59,35 +46,33 @@ app.use((req, res, next) => {
   res.setHeader(
     'Content-Security-Policy',
     "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline'; " +
+    "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com; " +
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src 'self' https://fonts.gstatic.com; " +
     "img-src 'self' data: https:; " +
     "connect-src 'self'; " +
+    "frame-src https://challenges.cloudflare.com; " +
     "frame-ancestors 'none';"
   );
   next();
 });
 
+// ─── Rate limits ─────────────────────────────────────────────
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  handler: (req, res) => res.redirect(303, '/login/?error=TooManyAttempts')
+});
+const authLimiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100, standardHeaders: 'draft-7', legacyHeaders: false });
+const apiLimiter  = rateLimit({ windowMs: 60 * 1000, limit: 120, standardHeaders: 'draft-7', legacyHeaders: false });
+
+app.post('/auth/callback/credentials', loginLimiter);
+app.use('/auth', authLimiter, ExpressAuth(authConfig));
+
 // ─── API ─────────────────────────────────────────────────────
-app.use(express.json({ limit: '5mb' }));
-
-app.get('/api/data', async (req, res) => {
-  try {
-    // Público: solo el contenido de la web. Admin, clientes y finanzas no salen
-    // hasta que haya autenticación en el servidor.
-    const doc = await db.collection(COLLECTION).findOne({ _id: DOC_ID });
-    res.json({ siteContent: (doc && doc.data && doc.data.siteContent) || {} });
-  } catch (e) {
-    console.error('GET /api/data:', e.message);
-    res.status(500).json({ error: 'Internal error' });
-  }
-});
-
-// Escritura cerrada hasta que haya autenticación en el servidor.
-app.post('/api/data', (req, res) => {
-  res.status(403).json({ error: 'Forbidden' });
-});
+app.use('/api', apiLimiter, apiRouter());
 
 // ─── Static files ─────────────────────────────────────────────
 app.use(express.static(ROOT, { dotfiles: 'allow' }));
@@ -96,6 +81,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(ROOT, 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Quantum Florida Management running on port ${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Quantum Florida Management running on ${HOST}:${PORT}`);
 });
