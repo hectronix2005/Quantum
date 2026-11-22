@@ -52,11 +52,12 @@ Miami-Dade, Broward (Fort Lauderdale), Orange (Orlando), Hillsborough (Tampa), D
 - **Responsive** — Mobile-first design with Inter & Playfair Display typography
 - **SEO Optimized** — Meta tags, Open Graph, Twitter Cards, JSON-LD structured data, sitemap, robots.txt
 - **Portals** — Separate login, admin dashboard, and client portal interfaces
-- **Static Hosting** — Deployed on GitHub Pages with no backend dependencies
+- **Backend** — Node + Express, Auth.js login, MongoDB
 
 ## Deployment
 
-The site is hosted on **GitHub Pages** from the `main` branch. Any push to `main` automatically deploys.
+Production runs on the `ubuntu` host (systemd user service `quantum-fm`, public via https://qfm.tail0be41e.ts.net).
+Deploy with `bin/deploy`; roll back with `bin/rollback` (see `CLAUDE.md`, «Versiones y rollback»).
 
 ## License
 

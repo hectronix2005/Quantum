@@ -6,7 +6,8 @@ import rateLimit from 'express-rate-limit';
 import { ExpressAuth } from '@auth/express';
 import { authConfig } from './lib/auth.js';
 import { apiRouter } from './lib/api.js';
-import { connectDB } from './lib/store.js';
+import { connectDB, isConnected } from './lib/store.js';
+import { execFileSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -28,6 +29,13 @@ for (const key of ['MONGODB_URI', 'AUTH_SECRET']) {
 // Un salto de proxy (Heroku router o Tailscale Funnel): req.ip y req.protocol reales.
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
+
+// Revisión desplegada (la lee la sonda /up y bin/deploy para comprobar la versión).
+let REVISION = 'desconocida';
+try {
+  REVISION = execFileSync('git', ['rev-parse', 'HEAD'],
+    { cwd: __dirname, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+} catch (_) {}
 
 // ─── MongoDB connection ───────────────────────────────────────
 connectDB(MONGODB_URI, DB_NAME, __dirname).catch(err => {
@@ -55,6 +63,14 @@ app.use((req, res, next) => {
     "frame-ancestors 'none';"
   );
   next();
+});
+
+// ─── Sonda de salud ──────────────────────────────────────────
+// 200 con la revisión cuando la base está conectada; 503 si no. Sin datos sensibles.
+app.get('/up', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  const ok = isConnected();
+  res.status(ok ? 200 : 503).json({ status: ok ? 'ok' : 'sin-base', revision: REVISION });
 });
 
 // ─── Rate limits ─────────────────────────────────────────────

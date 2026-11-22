@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# Despliega origin/main en producción (ubuntu, ~/services/quantum-fm, systemd «quantum-fm»).
+#
+#   bin/deploy          trae origin/main, instala dependencias, reinicia, sonda /up y etiqueta
+#
+# Lánzalo desde la copia de desarrollo (~/RubymineProjects/Quantum Florida Managment), no desde
+# ~/services/quantum-fm: así el rollback automático usa el bin/rollback que ya conoces, no el de
+# la versión nueva que acaba de fallar.
+#
+# Pasos: candado → copia de producción limpia → etiqueta la versión que ya corre si no tenía
+# → fast-forward a origin/main → npm ci (si cambió el lock) → reinicio → sonda.
+# Sonda en verde: etiqueta vAAAA.MM.DD-N + Release de GitHub (si falla, solo avisa).
+# Sonda en rojo: llama UNA vez a bin/rollback con la versión anterior y termina con error.
+# Este proyecto no tiene migraciones (MongoDB, un único documento): no hay copia previa de la
+# base en el despliegue; la copia semanal cifrada es ~/services/quantum-fm-backup.sh.
+set -euo pipefail
+
+main() {
+  local aqui; aqui="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+  # shellcheck source=bin/_comun.sh
+  source "$aqui/_comun.sh"
+  local rollback="$aqui/rollback"
+
+  candado
+  [[ -d "$QFM_DIR/.git" ]] || { error "no existe $QFM_DIR"; exit 1; }
+  if [[ -n "$(g status --porcelain --untracked-files=no)" ]]; then
+    error "$QFM_DIR tiene cambios sin commitear; no se despliega"; g status --short >&2; exit 1
+  fi
+
+  timeout 120 git -C "$QFM_DIR" fetch -q origin --tags || { error "no se pudo traer origin"; exit 1; }
+  local previo nuevo previa
+  previo="$(g rev-parse HEAD)"
+  nuevo="$(g rev-parse origin/main)"
+
+  # La versión que ya corre queda etiquetada para poder volver a ella.
+  previa="$(etiqueta_de "$previo")"
+  if [[ -z "$previa" ]]; then
+    ETIQUETA_CREADA=""
+    etiquetar "$previo" "Versión en producción antes de desplegar $(g rev-parse --short "$nuevo")"
+    previa="${ETIQUETA_CREADA:-$previo}"
+  fi
+
+  if [[ "$previo" == "$nuevo" ]]; then
+    info "producción ya está en origin/main ($(g rev-parse --short "$nuevo")); solo se comprueba"
+    sonda "$nuevo" || { avisar "Quantum FM: sonda en rojo sin cambios de versión" "$(url_sonda)"; exit 1; }
+    exit 0
+  fi
+
+  info "desplegando $(g rev-parse --short "$previo") → $(g rev-parse --short "$nuevo")"
+  # Se comprueba ANTES de tocar el disco: si no avanza, producción sigue tal cual.
+  g merge-base --is-ancestor main "$nuevo" || { error "main local no avanza en fast-forward a origin/main"; exit 1; }
+  g checkout -q main
+  g merge -q --ff-only "$nuevo"
+
+  if dependencias && reiniciar && sonda "$nuevo"; then
+    ETIQUETA_CREADA=""
+    etiquetar "$nuevo" "Despliegue de $(g rev-parse --short "$nuevo") en producción ($(hostname -s))" release
+    # La versión que corría antes: a ella vuelve «bin/rollback» sin argumento.
+    mkdir -p "$QFM_STATE" && printf '%s\n' "$previa" > "$QFM_STATE/anterior" || true
+    info "desplegado ${ETIQUETA_CREADA:-$(g rev-parse --short "$nuevo")} y sonda en verde"
+    exit 0
+  fi
+
+  error "el despliegue de $(g rev-parse --short "$nuevo") falló"
+  if [[ -x "$rollback" ]]; then
+    avisar "Quantum FM: despliegue fallido, rollback automático a $previa" \
+      "Sonda en rojo tras desplegar $(g rev-parse --short "$nuevo"). Se vuelve a $previa."
+    if ! QFM_ROLLBACK_AUTO=1 "$rollback" "$previa"; then
+      error "el rollback automático también falló"
+      avisar "Quantum FM: ROLLBACK automático a $previa FALLIDO" \
+        "Producción puede estar en $(g rev-parse --short HEAD). Mirar journalctl --user -u $QFM_UNIT en $(hostname -s)."
+    fi
+  else
+    avisar "Quantum FM: despliegue fallido SIN rollback" \
+      "Sonda en rojo tras desplegar $(g rev-parse --short "$nuevo") y no se encontró $rollback."
+  fi
+  exit 1
+}
+
+main "$@"
